@@ -647,7 +647,7 @@ DQ
         <scene sceneID="Amp-FV-BpF">
             <objects>
                 <viewController id="DDv-9m-YAT" customClass="WorkingDomainController" customModule="workingSetProject_v2" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="wNx-Km-6Vb">
+                    <view key="view" id="wNx-Km-6Vb" customClass="dropView" customModule="workingSetProject_v2" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="304" height="391"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>

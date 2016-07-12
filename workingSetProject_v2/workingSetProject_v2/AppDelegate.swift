@@ -110,6 +110,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
         initializeApp()
+        
+        let workDomain = singleton.coreDataObject.getEntityObject("WorkingDomain", idKey: "nameOfWD", idName: "Apple")
+        
+        let associatedFile = singleton.coreDataObject.getDataObjects("File") //workDomain.valueForKey("associatedFiles")
+        
+        for i in associatedFile{
+            let a = i.valueForKey("nameOfFile") as! String
+            //let b = i.valueForKey("associatedWD") as! String
+         
+            print(a)
+            print(    i.valueForKey("nameOfPath")  )
+        }
+       // print(  associatedFile )
+        
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

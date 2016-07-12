@@ -27,6 +27,7 @@
 		4C723AE51D2B838B00E3CB51 /* WorkingDomainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C723AE41D2B838B00E3CB51 /* WorkingDomainController.swift */; };
 		4C723AE81D2B871B00E3CB51 /* Edit_User_Settings_Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C723AE71D2B871B00E3CB51 /* Edit_User_Settings_Window.swift */; };
 		4C9312661D31BDFD0000F252 /* Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9312651D31BDFD0000F252 /* Directory.swift */; };
+		4CC51E821D35929A003BBD04 /* dropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC51E811D35929A003BBD04 /* dropView.swift */; };
 		4CD086A51D31C92600686ED7 /* WorkingDomainController_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD086A41D31C92600686ED7 /* WorkingDomainController_Ext.swift */; };
 		4CD086A71D31CE1700686ED7 /* tableViewManagerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD086A61D31CE1700686ED7 /* tableViewManagerClass.swift */; };
 		4CD086A91D31D10B00686ED7 /* workingSetManagerViewController_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD086A81D31D10B00686ED7 /* workingSetManagerViewController_Ext.swift */; };
@@ -63,6 +64,7 @@
 		4C723AE41D2B838B00E3CB51 /* WorkingDomainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingDomainController.swift; sourceTree = "<group>"; };
 		4C723AE71D2B871B00E3CB51 /* Edit_User_Settings_Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edit_User_Settings_Window.swift; sourceTree = "<group>"; };
 		4C9312651D31BDFD0000F252 /* Directory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Directory.swift; sourceTree = "<group>"; };
+		4CC51E811D35929A003BBD04 /* dropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dropView.swift; sourceTree = "<group>"; };
 		4CD086A41D31C92600686ED7 /* WorkingDomainController_Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingDomainController_Ext.swift; sourceTree = "<group>"; };
 		4CD086A61D31CE1700686ED7 /* tableViewManagerClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableViewManagerClass.swift; sourceTree = "<group>"; };
 		4CD086A81D31D10B00686ED7 /* workingSetManagerViewController_Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = workingSetManagerViewController_Ext.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				4C723ABA1D29671100E3CB51 /* appDelegate */,
 				4C723AC31D29764B00E3CB51 /* workingSetManager */,
 				4C723ABF1D2972F700E3CB51 /* Supporting Resources */,
+				4CC51E811D35929A003BBD04 /* dropView.swift */,
 			);
 			path = workingSetProject_v2;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CF507651D2C28D600B3ED7D /* User_Pref_Manager_Class.swift in Sources */,
+				4CC51E821D35929A003BBD04 /* dropView.swift in Sources */,
 				4C723ADF1D2B0CBF00E3CB51 /* WindowController.swift in Sources */,
 				4CD086A91D31D10B00686ED7 /* workingSetManagerViewController_Ext.swift in Sources */,
 				4C723AD61D297AC800E3CB51 /* ORSSerialPort.m in Sources */,

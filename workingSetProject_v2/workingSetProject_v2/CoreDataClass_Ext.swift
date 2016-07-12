@@ -256,6 +256,39 @@ extension dataCore{
     
     
     
+    func getEntityObject(nameOfEntity: String, idKey:String, idName:String )->NSManagedObject{
+        var retVal:NSManagedObject!
+        
+        
+        //2
+        let fetchRequest = NSFetchRequest(entityName: nameOfEntity)
+        let predicate = NSPredicate(format: "%K == %@",idKey,idName)
+        fetchRequest.predicate = predicate
+        
+        //3
+        do{
+            
+            
+            let result = try self.managedObjectContext.executeFetchRequest(fetchRequest)
+            
+            for managedObject in result {
+              
+                retVal = managedObject as! NSManagedObject
+                
+            }
+        } catch{
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+
+        
+        
+        return retVal
+    }
+    
+    
+    
+    
     
     
     func getValueOfEntityObject(nameOfEntity: String, idKey: String,nameOfKey:String, nameOfObject: String)->String{
@@ -288,6 +321,9 @@ extension dataCore{
         
         
     }
+    
+    
+    
     
     
     
