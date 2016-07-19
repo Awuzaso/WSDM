@@ -14,24 +14,133 @@ extension WorkingDomainController : NSTableViewDataSource {
     /*This function is called everytime there is a change in the table view.*/
     func updateStatus() {
         // 1 - Get collection of objects from object graph.
-        workingSets = singleton.coreDataObject.getDataObjects("WorkingDomain")
+        //workingSets = singleton.coreDataObject.getDataObjects("WorkingDomain")
         
         // 2 - Set the current selection of working set from table view.
         //let item = workingSets[tableView!.selectedRow]
-        //nameOfWS =  wdTable.getItemSelected_String(tableView, managedObjectArray: workingSets, objectAttr: "SmartFOlder")       /*item.valueForKey("smartFOlder") as? String*/
+        
+        selectedFile =  getItemSelected_String(tableViewWD)
+        
+        directoryPath.stringValue = singleton.coreDataObject.getValueOfEntityObject("File", idKey: "nameOfFile", nameOfKey: "nameOfPath", nameOfObject: selectedFile)
+        
         
         // 3 - Change the status label beneath the table view dynamically as selection changes.
-        statusLabel.stringValue = "Directory Path"
+        //statusLabel.stringValue = "Directory Path"
         
         // 4 - When a working set is seleted from the table view, launch window buttons are then made available to be pressed.
-        switchOnOffButtons(true)
+        //switchOnOffButtons(true)
     }
+    
+    func getItemSelected_String(tableView :NSTableView)->String{
+        
+        
+        let fetchedWD:NSManagedObject!
+        
+        
+        //Here we will specify the contents for associated files of WD.
+        
+        // 1 - Get Managed Object Context
+        let managedContext = singleton.coreDataObject.managedObjectContext
+        
+        // 2 - Establish Fetch Request
+        let fetchRequest = NSFetchRequest(entityName: "WorkingDomain")
+        
+        // 3 - Specify Predicate
+        //let predicate = NSPredicate(format: "nameOfWD",loadedWDName)
+        
+        
+        let predicate = NSPredicate(format: "%K == %@","nameOfWD",loadedWDName)
+        
+        
+        fetchRequest.predicate = predicate
+        
+        // 3 - Attempt Fetch Request
+        do {
+            let results =
+                try managedContext.executeFetchRequest(fetchRequest)
+            contentsOfWD = results as! [NSManagedObject]
+            
+            
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        ///*
+        let spec = contentsOfWD[0]
+        let list = spec.mutableSetValueForKey("associatedFiles")
+        
+        var associatedObjects : [String] = []
+        
+        
+        
+      
+            
+            for i in list{
+                let item = i.valueForKey("nameOfFile") as! String
+                
+                
+                associatedObjects.append(item)
+            }
+        
+        let item = associatedObjects[tableView.selectedRow]
+        
+        return item
+    }
+    
+  
+    
+    
+    
     
     
     
     // Fine as is.
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         
+        ///*
+        let fetchedWD:NSManagedObject!
+        
+        
+        //Here we will specify the contents for associated files of WD.
+        
+        // 1 - Get Managed Object Context
+        let managedContext = singleton.coreDataObject.managedObjectContext
+        
+        // 2 - Establish Fetch Request
+        let fetchRequest = NSFetchRequest(entityName: "WorkingDomain")
+        
+        // 3 - Specify Predicate
+        //let predicate = NSPredicate(format: "nameOfWD",loadedWDName)
+        
+        
+        let predicate = NSPredicate(format: "%K == %@","nameOfWD",loadedWDName)
+        
+        
+        fetchRequest.predicate = predicate
+        
+        // 3 - Attempt Fetch Request
+        do {
+            let results =
+                try managedContext.executeFetchRequest(fetchRequest)
+            contentsOfWD = results as! [NSManagedObject]
+            
+            
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        
+    
+        
+        let spec = contentsOfWD[0]
+        let list = spec.mutableSetValueForKey("associatedFiles")
+        
+        //print("Count of items is: \(list.count)")
+        //*/
+        
+        
+        
+        /*
         //1
         let managedContext = singleton.coreDataObject.managedObjectContext
         //2
@@ -40,17 +149,37 @@ extension WorkingDomainController : NSTableViewDataSource {
         do {
             let results =
                 try managedContext.executeFetchRequest(fetchRequest)
-            workingSets = results as! [NSManagedObject]
+            contentsOfWD = results as! [NSManagedObject]
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
+        */
         
-        return workingSets.count ?? 0
+        
+        
+        //return contentsOfWD.count ?? 0
+        return list.count ?? 0
     }
     
+    func tableViewDoubleClick(sender: AnyObject) {
+        print("Double click for \(selectedFile)")
+        
+        
+         let openWindowObject = windowManager()
+        
+        let filePath:String!
+        
+        
+        filePath = singleton.coreDataObject.getValueOfEntityObject("File", idKey: "nameOfFile", nameOfKey: "nameOfPath", nameOfObject: selectedFile)
+        print (filePath)
+        
+       NSWorkspace.sharedWorkspace().selectFile(nil, inFileViewerRootedAtPath: filePath)
+        
+        
+        
+    }
     
-    
-    
+    /*
     // May need to change.
     func tableView(tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
         print("Sorting.")
@@ -65,7 +194,7 @@ extension WorkingDomainController : NSTableViewDataSource {
             reloadFileList()
         }
     }
-
+     */
     
 }
 
@@ -81,10 +210,19 @@ extension WorkingDomainController : NSTableViewDelegate {
     
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
+        print( row)
+        
         
         var text:String = ""
         var cellIdentifier: String = ""
         
+        
+        
+        
+        let fetchedWD:NSManagedObject!
+        
+        
+        //Here we will specify the contents for associated files of WD.
         
         // 1 - Get Managed Object Context
         let managedContext = singleton.coreDataObject.managedObjectContext
@@ -92,40 +230,92 @@ extension WorkingDomainController : NSTableViewDelegate {
         // 2 - Establish Fetch Request
         let fetchRequest = NSFetchRequest(entityName: "WorkingDomain")
         
+        // 3 - Specify Predicate
+        //let predicate = NSPredicate(format: "nameOfWD",loadedWDName)
+        
+        
+        let predicate = NSPredicate(format: "%K == %@","nameOfWD",loadedWDName)
+
+        
+        fetchRequest.predicate = predicate
+
         // 3 - Attempt Fetch Request
         do {
             let results =
                 try managedContext.executeFetchRequest(fetchRequest)
-            workingSets = results as! [NSManagedObject]
+            contentsOfWD = results as! [NSManagedObject]
+         
+      
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
         
-        // 4 - Value to Fill Table as per Row
-        var value = workingSets[row].valueForKey("associatedFiles") as? String
+ 
+        fetchedWD = contentsOfWD[0]
         
         
-        // 5 Assign Value in Event that there is no Retrieved Value
-        if(value == nil){
-            value = "Unnamed"
+        ///*
+        let spec = contentsOfWD[0]
+        let list = spec.mutableSetValueForKey("associatedFiles")
+        
+        
+        print( list.count )
+        
+        
+        var associatedObjects : [String] = []
+        
+        
+        var isEmpty:Bool!
+        
+        if(list.count == 0){
+            isEmpty = true
+        }
+        else{
+            isEmpty = false
+        }
+        //*/
+        
+        
+        
+        
+        ///*
+        
+        if( isEmpty == false){
+        
+            for i in list{
+                let item = i.valueForKey("nameOfFile") as! String
+                print( item )
+                
+                associatedObjects.append(item)
+            }
+            
+            
+             var value = associatedObjects[row]
+            
+            
+            
+            
+            // 6 - Specifying table column
+            if tableColumn == tableView.tableColumns[0] {
+               
+                text = value //value!
+                cellIdentifier = "NameCellID"
+            } else if tableColumn == tableView.tableColumns[1] {
+                text = "Value"
+                cellIdentifier = "DateCellID"
+            }
+            
+            // 7 - Fill cell content.
+            if let cell = tableView.makeViewWithIdentifier(cellIdentifier, owner: nil) as? NSTableCellView {
+                cell.textField?.stringValue = text
+                return cell
+            }
         }
         
-        // 6 - Specifying table column
-        if tableColumn == tableView.tableColumns[0] {
-            text = value!
-            cellIdentifier = "NameCellID"
-        } else if tableColumn == tableView.tableColumns[1] {
-            text = "Value"
-            cellIdentifier = "DateCellID"
-        }
-        
-        // 7 - Fill cell content.
-        if let cell = tableView.makeViewWithIdentifier(cellIdentifier, owner: nil) as? NSTableCellView {
-            cell.textField?.stringValue = text
-            return cell
-        }
-        
+        //*/
         // 8
         return nil
+        
+        
     }
 }

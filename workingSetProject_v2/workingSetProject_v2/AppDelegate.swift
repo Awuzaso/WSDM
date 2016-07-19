@@ -111,18 +111,112 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         initializeApp()
         
-        let workDomain = singleton.coreDataObject.getEntityObject("WorkingDomain", idKey: "nameOfWD", idName: "Apple")
         
-        let associatedFile = singleton.coreDataObject.getDataObjects("File") //workDomain.valueForKey("associatedFiles")
+      
+        //let file = singleton.coreDataObject.getEntityObject("WorkingDomain", idKey: "nameOfWD", idName: "Nausea")
         
-        for i in associatedFile{
-            let a = i.valueForKey("nameOfFile") as! String
-            //let b = i.valueForKey("associatedWD") as! String
-         
-            print(a)
-            print(    i.valueForKey("nameOfPath")  )
+        //let obj = file.valueForKey("associatedFiles")
+        
+        
+        //print(  file.valueForKey("nameOfWD") )
+        
+        //Fetching all associated files of Nausea
+        
+            // Create Fetch Request
+            //let fetchRequest = NSFetchRequest(entityName: "File")
+            
+            // Add Sort Descriptor
+            //let sortDescriptor = NSSortDescriptor(key: "nameOfFile", ascending: true)
+            //fetchRequest.sortDescriptors = [sortDescriptor]
+            
+            // Execute Fetch Request
+            /*do {
+                let result = try singleton.coreDataObject.managedObjectContext.executeFetchRequest(fetchRequest)
+                print("Files associated with Nausea:")
+                print()
+                let files = result as! [NSManagedObject]
+                
+                for managedObject in files {
+                    
+                    let assocWD = managedObject.valueForKey("associatedWD") as! NSMutableSet
+                    let assocWDval =  assocWD.valueForKey("nameOfWD")
+                   
+                    //print(assocWDval)
+                    
+                  
+                        if let first = managedObject.valueForKey("nameOfFile"), last = managedObject.valueForKey("nameOfPath") {
+                            print("\(first)\n \(last)\n\(assocWDval)")
+                        }
+                  
+                    
+                    
+                }
+                
+            } catch {
+                let fetchError = error as NSError
+                print(fetchError)
+            }*/
+        
+        
+        
+        /*
+        
+        
+        // Fetching
+        let fetchRequest = NSFetchRequest(entityName: "WorkingDomain")
+        
+        // Create Predicate
+        //let predicate = NSPredicate(format: "%K == %@", "associatedWD", "Nausea")
+        //fetchRequest.predicate = predicate
+        
+        // Add Sort Descriptor
+        let sortDescriptor1 = NSSortDescriptor(key: "nameOfFile", ascending: true)
+        let sortDescriptor2 = NSSortDescriptor(key: "nameOfPath", ascending: true)
+        //fetchRequest.sortDescriptors = [sortDescriptor1, sortDescriptor2]
+        var associatedObjects : [String] = []
+        // Execute Fetch Request
+        do {
+            let result = try singleton.coreDataObject.managedObjectContext.executeFetchRequest(fetchRequest)
+            
+            for managedObject in result {
+                let object = managedObject.mutableSetValueForKey("associatedFiles")
+                /*if let first = managedObject.valueForKey("nameOfFile"), last = managedObject.valueForKey("nameOfPath"), age = managedObject.valueForKey("associatedWD") {
+                    print("\(first) \(last) (\(age))")
+                }*/
+                //print("$$$$$$$$$$$$$$$$")
+                //print(object.valueForKey("nameOfFile"))
+                for i in object{
+                    let item = i.valueForKey("nameOfFile") as! String
+                    associatedObjects.append(item)
+                }
+            }
+            
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
         }
-       // print(  associatedFile )
+        print("/////////////////////")
+        for i in associatedObjects{
+            print(i)
+        }
+        print("/////////////////////")
+        
+        
+        */
+        
+        
+        //////
+        
+        
+        
+        
+        
+        
+        //print( obj )
+        
+        //print ( obj?.valueForKey("nameOfFile") )
+        
+        print("Glip.")
         
     }
 

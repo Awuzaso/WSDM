@@ -9,69 +9,54 @@
 import Cocoa
 
 class WorkingDomainController: NSViewController {
-
     
-    /*WD Managed Object.*/
-    //let workingDomainObject = NSManagedObject
-    
-    
-    
-    let wdTable = tableViewManager()
+ 
     
     var loadedWDName = "Value"
     var wdAccDate:NSDate!
     
     
     
-    
+    @IBOutlet weak var tableViewWD: NSTableView!
     @IBOutlet weak var nameOfWD: NSTextField!
-    
-    
-    /*Variables for Sorting Table View*/
-    var sortOrder = Directory.FileOrder.Name
-    var sortAscending = true
-    
-    /*Outlets for Buttons*/
+    @IBOutlet weak var associateToCardState: NSTextField!
+    @IBOutlet weak var directoryPath: NSTextField!
     
     
     
     
-    
-    
-    
-    
-    /*Outlets for Table View*/
-    @IBOutlet weak var statusLabel: NSTextField!
-    //@IBOutlet weak var tableView: NSTableView!
     
     
     /*Variables*/
-    var nameOfWS = "Stuff" //Selected WS
-    var workingSets = [NSManagedObject]() //Stores instances of entity 'Working-Set'
+    //var nameOfWS = "Stuff" //Selected WS
+    var selectedFile:String!
+    var contentsOfWD = [NSManagedObject]() //Stores instances of entity 'Working-Set'
+    /*Variables for Sorting Table View*/
+    var sortOrder = Directory.FileOrder.Name
+    var sortAscending = true
+
     
-    
-    
-    /*Function for toggling between off and on state of buttons.*/
-    func switchOnOffButtons(isActive:Bool){
-      // Do stuff.
+    func setupTableView(){
+        tableViewWD!.setDelegate(self)
+        tableViewWD!.setDataSource(self)
+        tableViewWD!.target = self
+        tableViewWD.doubleAction = "tableViewDoubleClick:"
+        
+        
+        
+           NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveNameChange_Button:",name:"updateWD", object: nil)
+           NSNotificationCenter.defaultCenter().addObserver(self, selector: "rmvFile",name:"remove", object: nil)
     }
     
     
+
     /*Set-up View*/
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-      //loadedWDName = nameOfWD.stringValue
-        
-        
         print("The value is now: \(singleton.openedWD)")
         nameOfWD.stringValue = singleton.openedWD
-        
         loadedWDName = nameOfWD.stringValue
-        
-                
-        // 3 - Toggle Button States
-        switchOnOffButtons(false)
+        setupTableView()
         
     }
 
@@ -79,65 +64,45 @@ class WorkingDomainController: NSViewController {
         
     }
     
-    
-    @IBAction func saveNameChange_Button(sender: AnyObject) {
+    func rmvFile(){
+        singleton.coreDataObject.deleteEntityObject("File", nameOfKey: "nameOfFile", nameOfObject: selectedFile)
         
-        
-
-        
-        
-        
-        
-        
-       // let collection = singleton.coreDataObject.getDataObjects("WorkingDomain")
-        
-        
-        
-        //print(loadedWDName)
-        
-        singleton.coreDataObject.editEntityObject("WorkingDomain", nameOfKey: "nameOfWD", oldName: loadedWDName, editName: nameOfWD.stringValue)
-        
-        
-        
-        
-        
-        
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-        loadedWDName = nameOfWD.stringValue
-        
-      
-        /*
-        // 1 - Setting window object.
-        let openWindowObject = windowManager()
-        openWindowObject.setWindow("Main",nameOfWindowController: "WorkingDomainManager")
-        // 2 - Setting the values of the window object.
-        let windowController = openWindowObject.get_windowController()
-        let openWindowViewController = windowController.contentViewController as! workingSetManagerViewController
-        openWindowViewController.reloadFileList()
-        */
-        
-          NSNotificationCenter.defaultCenter().postNotificationName("update", object: nil)
-        
-        print("Saved!")
+        self.reloadFileList()
         
     }
     
+   
     
+    
+    @IBAction func saveNameChange_Button(sender: AnyObject) {
+        singleton.coreDataObject.editEntityObject("WorkingDomain", nameOfKey: "nameOfWD", oldName: loadedWDName, editName: nameOfWD.stringValue)
+        loadedWDName = nameOfWD.stringValue
+        singleton.openedWD = loadedWDName
+        NSNotificationCenter.defaultCenter().postNotificationName("update", object: nil)
+        self.reloadFileList()
+        print("Saved!")
+    }
+    
+    
+    
+    @IBAction func removeFile_Button(sender: AnyObject) {
+        
+        singleton.openWindowObject.setWindow("Main", nameOfWindowController: "removeFileWindow")
+        singleton.openWindowObject.runModalWindow()
+        //self.removeSelectedFile()
+    }
+    
+    
+    
+    
+    func updateTableViewWD(){
+        self.reloadFileList()
+    }
     
     func reloadFileList() {
         //directoryItems = directory?.contentsOrderedBy(sortOrder, ascending: sortAscending)
-        //tableView!.reloadData()
+        tableViewWD!.reloadData()
     }
-    
     
     override var representedObject: AnyObject? {
         didSet {

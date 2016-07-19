@@ -36,12 +36,17 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
         nameOfStoryboard = in_nameOfStoryBoard
         nameOfWindowIfAssociated = in_nameOfWinAssoc
         nameOfWindowIfUnassociated = in_nameOfWinUnAssoc
+        print(pathName)
+        let pathNameBlue = "/dev/cu.LightBlue-Bean"
+        print( pathNameBlue )
+        //print( serialPortManager.availablePorts )
+        
         serialPort = ORSSerialPort(path: "\(pathName)")
         serialPort?.delegate = self
         serialPort!.baudRate = 115200
         serialPort!.numberOfStopBits = 1
         serialPort!.open()
-        print("Hello.")
+       
     }
     
     /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/

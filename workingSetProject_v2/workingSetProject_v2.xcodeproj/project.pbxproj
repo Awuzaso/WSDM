@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4C723AA91D2966CB00E3CB51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C723AA81D2966CB00E3CB51 /* AppDelegate.swift */; };
 		4C723AAB1D2966CB00E3CB51 /* workingSetManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C723AAA1D2966CB00E3CB51 /* workingSetManagerViewController.swift */; };
-		4C723AAE1D2966CB00E3CB51 /* workingSetProject_v2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C723AAC1D2966CB00E3CB51 /* workingSetProject_v2.xcdatamodeld */; };
 		4C723AB01D2966CB00E3CB51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C723AAF1D2966CB00E3CB51 /* Assets.xcassets */; };
 		4C723AB31D2966CB00E3CB51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C723AB11D2966CB00E3CB51 /* Main.storyboard */; };
 		4C723ABE1D2972CD00E3CB51 /* CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C723ABD1D2972CD00E3CB51 /* CoreDataClass.swift */; };
@@ -28,6 +27,8 @@
 		4C723AE81D2B871B00E3CB51 /* Edit_User_Settings_Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C723AE71D2B871B00E3CB51 /* Edit_User_Settings_Window.swift */; };
 		4C9312661D31BDFD0000F252 /* Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9312651D31BDFD0000F252 /* Directory.swift */; };
 		4CC51E821D35929A003BBD04 /* dropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC51E811D35929A003BBD04 /* dropView.swift */; };
+		4CD075E61D3D8DD8009DAE45 /* workingSetProject_v2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CD075E41D3D8DD8009DAE45 /* workingSetProject_v2.xcdatamodeld */; };
+		4CD075EA1D3DDD1D009DAE45 /* removeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD075E91D3DDD1D009DAE45 /* removeWindow.swift */; };
 		4CD086A51D31C92600686ED7 /* WorkingDomainController_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD086A41D31C92600686ED7 /* WorkingDomainController_Ext.swift */; };
 		4CD086A71D31CE1700686ED7 /* tableViewManagerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD086A61D31CE1700686ED7 /* tableViewManagerClass.swift */; };
 		4CD086A91D31D10B00686ED7 /* workingSetManagerViewController_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD086A81D31D10B00686ED7 /* workingSetManagerViewController_Ext.swift */; };
@@ -39,7 +40,6 @@
 		4C723AA51D2966CB00E3CB51 /* workingSetProject_v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workingSetProject_v2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C723AA81D2966CB00E3CB51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C723AAA1D2966CB00E3CB51 /* workingSetManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = workingSetManagerViewController.swift; sourceTree = "<group>"; };
-		4C723AAD1D2966CB00E3CB51 /* workingSetProject_v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = workingSetProject_v2.xcdatamodel; sourceTree = "<group>"; };
 		4C723AAF1D2966CB00E3CB51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C723AB21D2966CB00E3CB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C723AB41D2966CB00E3CB51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,6 +65,8 @@
 		4C723AE71D2B871B00E3CB51 /* Edit_User_Settings_Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edit_User_Settings_Window.swift; sourceTree = "<group>"; };
 		4C9312651D31BDFD0000F252 /* Directory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Directory.swift; sourceTree = "<group>"; };
 		4CC51E811D35929A003BBD04 /* dropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dropView.swift; sourceTree = "<group>"; };
+		4CD075E51D3D8DD8009DAE45 /* workingSetProject_v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = workingSetProject_v2.xcdatamodel; sourceTree = "<group>"; };
+		4CD075E91D3DDD1D009DAE45 /* removeWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = removeWindow.swift; sourceTree = "<group>"; };
 		4CD086A41D31C92600686ED7 /* WorkingDomainController_Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingDomainController_Ext.swift; sourceTree = "<group>"; };
 		4CD086A61D31CE1700686ED7 /* tableViewManagerClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableViewManagerClass.swift; sourceTree = "<group>"; };
 		4CD086A81D31D10B00686ED7 /* workingSetManagerViewController_Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = workingSetManagerViewController_Ext.swift; sourceTree = "<group>"; };
@@ -128,7 +130,7 @@
 				4C723AAF1D2966CB00E3CB51 /* Assets.xcassets */,
 				4C723AB11D2966CB00E3CB51 /* Main.storyboard */,
 				4C723AB41D2966CB00E3CB51 /* Info.plist */,
-				4C723AAC1D2966CB00E3CB51 /* workingSetProject_v2.xcdatamodeld */,
+				4CD075E41D3D8DD8009DAE45 /* workingSetProject_v2.xcdatamodeld */,
 			);
 			name = "Supporting Resources";
 			sourceTree = "<group>";
@@ -136,8 +138,8 @@
 		4C723AC01D29731400E3CB51 /* coreDataManager */ = {
 			isa = PBXGroup;
 			children = (
-				4C723ABD1D2972CD00E3CB51 /* CoreDataClass.swift */,
 				4C723AC11D29743000E3CB51 /* CoreDataClass_Ext.swift */,
+				4C723ABD1D2972CD00E3CB51 /* CoreDataClass.swift */,
 			);
 			name = coreDataManager;
 			sourceTree = "<group>";
@@ -204,6 +206,7 @@
 				4C723AE41D2B838B00E3CB51 /* WorkingDomainController.swift */,
 				4CD086A41D31C92600686ED7 /* WorkingDomainController_Ext.swift */,
 				4CD086A61D31CE1700686ED7 /* tableViewManagerClass.swift */,
+				4CD075E91D3DDD1D009DAE45 /* removeWindow.swift */,
 			);
 			name = WorkingDomain_Class;
 			sourceTree = "<group>";
@@ -309,9 +312,11 @@
 				4CC51E821D35929A003BBD04 /* dropView.swift in Sources */,
 				4C723ADF1D2B0CBF00E3CB51 /* WindowController.swift in Sources */,
 				4CD086A91D31D10B00686ED7 /* workingSetManagerViewController_Ext.swift in Sources */,
+				4CD075E61D3D8DD8009DAE45 /* workingSetProject_v2.xcdatamodeld in Sources */,
 				4C723AD61D297AC800E3CB51 /* ORSSerialPort.m in Sources */,
 				4C723ADD1D2B0C8600E3CB51 /* WindowManagerClass.swift in Sources */,
 				4C723AC71D29798700E3CB51 /* workingSetManagerModel.swift in Sources */,
+				4CD075EA1D3DDD1D009DAE45 /* removeWindow.swift in Sources */,
 				4C723AE81D2B871B00E3CB51 /* Edit_User_Settings_Window.swift in Sources */,
 				4C723AE51D2B838B00E3CB51 /* WorkingDomainController.swift in Sources */,
 				4C723AD41D297AC800E3CB51 /* ORSSerialBuffer.m in Sources */,
@@ -326,7 +331,6 @@
 				4C723ABE1D2972CD00E3CB51 /* CoreDataClass.swift in Sources */,
 				4C723AAB1D2966CB00E3CB51 /* workingSetManagerViewController.swift in Sources */,
 				4C723AD51D297AC800E3CB51 /* ORSSerialPacketDescriptor.m in Sources */,
-				4C723AAE1D2966CB00E3CB51 /* workingSetProject_v2.xcdatamodeld in Sources */,
 				4C723AA91D2966CB00E3CB51 /* AppDelegate.swift in Sources */,
 				4C723AE21D2B7C1300E3CB51 /* workingSetSingleton_Class.swift in Sources */,
 			);
@@ -481,12 +485,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		4C723AAC1D2966CB00E3CB51 /* workingSetProject_v2.xcdatamodeld */ = {
+		4CD075E41D3D8DD8009DAE45 /* workingSetProject_v2.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				4C723AAD1D2966CB00E3CB51 /* workingSetProject_v2.xcdatamodel */,
+				4CD075E51D3D8DD8009DAE45 /* workingSetProject_v2.xcdatamodel */,
 			);
-			currentVersion = 4C723AAD1D2966CB00E3CB51 /* workingSetProject_v2.xcdatamodel */;
+			currentVersion = 4CD075E51D3D8DD8009DAE45 /* workingSetProject_v2.xcdatamodel */;
 			path = workingSetProject_v2.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

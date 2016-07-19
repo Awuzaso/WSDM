@@ -833,6 +833,7 @@ static __strong NSMutableArray *allSerialPorts;
 
 - (void)setBaudRate:(NSNumber *)rate
 {
+ 
 	if (rate != _baudRate)
 	{
 		_baudRate = [rate copy];

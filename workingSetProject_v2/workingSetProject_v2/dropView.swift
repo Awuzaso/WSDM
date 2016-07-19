@@ -29,6 +29,11 @@ class dropView: NSView {
         super.drawRect(dirtyRect)
     }
     
+    func notify(){
+          //NSNotificationCenter.defaultCenter().postNotificationName("updateWD", object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName("updateWD", object: nil)
+    }
+    
     override func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation {
         if let pasteboard = sender.draggingPasteboard().propertyListForType("NSFilenamesPboardType") as? NSArray {
             if let path = pasteboard[0] as? String {
@@ -49,6 +54,8 @@ class dropView: NSView {
     
     override func draggingEnded(sender: NSDraggingInfo?) {
         self.layer?.backgroundColor = NSColor.grayColor().CGColor
+        
+        
     }
     
     override func performDragOperation(sender: NSDraggingInfo) -> Bool {
@@ -66,9 +73,9 @@ class dropView: NSView {
                 //GET YOUR FILE PATH !!
                 
                 
-                //Swift.print("filePath: \(filePath)")
+                Swift.print("filePath: \(filePath)")
                 
-              //Swift.print("fileName: \(fileName))")
+              Swift.print("fileName: \(fileName))")
                 
                 singleton.coreDataObject.addEntityObject("File", nameOfKey: "nameOfFile", nameOfObject: fileName!)
                 
@@ -83,13 +90,20 @@ class dropView: NSView {
                 
                 // Create a relationship.
                 
-                let workDomain = singleton.coreDataObject.getEntityObject("WorkingDomain", idKey: "nameOfWD", idName: "Apple")
+                let workDomain = singleton.coreDataObject.getEntityObject("WorkingDomain", idKey: "nameOfWD", idName: singleton.openedWD)
                 let file = singleton.coreDataObject.getEntityObject("File", idKey: "nameOfFile", idName: fileName!)
                 
                 
-                singleton.coreDataObject.createRelationship(workDomain, objectTwo: file, relationshipType: "associatedFiles")
+                //singleton.coreDataObject.createRelationship(workDomain, objectTwo: file, relationshipType: "associatedFiles")
+                
+                let files = workDomain.mutableSetValueForKey("associatedFiles")
+            
+                files.addObject(file)
                 
                 Swift.print ( workDomain )
+                
+                singleton.coreDataObject.saveManagedContext()
+                
                 
                 // Tell tableview of domain controller to reload.
                 
@@ -99,6 +113,10 @@ class dropView: NSView {
                 //Swift.print( singleton.coreDataObject.getDataObjects("File") )
                 
                 // Should post a notification to send file name and file path.
+                
+                self.notify()
+                
+                
                 return true
             }
         }

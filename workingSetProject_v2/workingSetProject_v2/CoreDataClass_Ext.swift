@@ -412,7 +412,7 @@ extension dataCore{
     func createRelationship(objectOne:NSManagedObject,objectTwo:NSManagedObject,relationshipType:String){
         
         
-        // - 1  Add entityTwo to entityOne.
+        // - 1  Add objectTwo to objectOne.
             let objectOfRelationship = NSSet(object:objectTwo)
         
         // -2 Add entityTwo to entityOne.

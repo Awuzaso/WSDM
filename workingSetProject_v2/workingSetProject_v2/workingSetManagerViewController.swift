@@ -57,6 +57,10 @@ class workingSetManagerViewController: NSViewController {
     
     /*Set-up View*/
     override func viewDidLoad() {
+        
+        
+       
+        
         super.viewDidLoad()
         tableView!.setDelegate(self)
         tableView!.setDataSource(self)
@@ -65,6 +69,9 @@ class workingSetManagerViewController: NSViewController {
         //Setting up sorting configuration:
         
         
+        
+        
+
         
         let nameDesc = "Name"
         let dateDesc = "Date"
@@ -80,6 +87,9 @@ class workingSetManagerViewController: NSViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeStatus:",name:"load", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTableView:",name:"update", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "launchAssociatedWindow:", name: "associateWindow", object: nil)
+        
+        
+       
         
     }
     
