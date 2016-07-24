@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C2522AA1D442C320040A640 /* EditWorkingDomainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2522A91D442C320040A640 /* EditWorkingDomainController.swift */; };
 		4C723AA91D2966CB00E3CB51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C723AA81D2966CB00E3CB51 /* AppDelegate.swift */; };
 		4C723AAB1D2966CB00E3CB51 /* workingSetManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C723AAA1D2966CB00E3CB51 /* workingSetManagerViewController.swift */; };
 		4C723AB01D2966CB00E3CB51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C723AAF1D2966CB00E3CB51 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C2522A91D442C320040A640 /* EditWorkingDomainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWorkingDomainController.swift; sourceTree = "<group>"; };
 		4C723AA51D2966CB00E3CB51 /* workingSetProject_v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workingSetProject_v2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C723AA81D2966CB00E3CB51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C723AAA1D2966CB00E3CB51 /* workingSetManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = workingSetManagerViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				4C723AC31D29764B00E3CB51 /* workingSetManager */,
 				4C723ABF1D2972F700E3CB51 /* Supporting Resources */,
 				4CC51E811D35929A003BBD04 /* dropView.swift */,
+				4C2522A91D442C320040A640 /* EditWorkingDomainController.swift */,
 			);
 			path = workingSetProject_v2;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				4CF507651D2C28D600B3ED7D /* User_Pref_Manager_Class.swift in Sources */,
 				4CC51E821D35929A003BBD04 /* dropView.swift in Sources */,
 				4C723ADF1D2B0CBF00E3CB51 /* WindowController.swift in Sources */,
+				4C2522AA1D442C320040A640 /* EditWorkingDomainController.swift in Sources */,
 				4CD086A91D31D10B00686ED7 /* workingSetManagerViewController_Ext.swift in Sources */,
 				4CD075E61D3D8DD8009DAE45 /* workingSetProject_v2.xcdatamodeld in Sources */,
 				4C723AD61D297AC800E3CB51 /* ORSSerialPort.m in Sources */,

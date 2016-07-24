@@ -23,9 +23,6 @@ class UnAssociated_View: NSViewController {
     }
     
     
-    @IBAction func Cancel(sender: AnyObject) {
-        singleton.openWindowObject.stopEvents()
-    }
     
     
     

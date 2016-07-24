@@ -40,7 +40,7 @@ class dropView: NSView {
                 //Swift.print(path)
                 let ext = NSURL(fileURLWithPath: path).pathExtension
                 //if ext == expectedExt {
-                    self.layer?.backgroundColor = NSColor.blueColor().CGColor
+                    //self.layer?.backgroundColor = NSColor.blueColor().CGColor
                     return NSDragOperation.Copy
                 //}
             }
@@ -49,11 +49,11 @@ class dropView: NSView {
     }
     
     override func draggingExited(sender: NSDraggingInfo?) {
-        self.layer?.backgroundColor = NSColor.redColor().CGColor
+        //self.layer?.backgroundColor = NSColor.redColor().CGColor
     }
     
     override func draggingEnded(sender: NSDraggingInfo?) {
-        self.layer?.backgroundColor = NSColor.grayColor().CGColor
+        //self.layer?.backgroundColor = NSColor.grayColor().CGColor
         
         
     }

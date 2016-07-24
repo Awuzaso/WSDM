@@ -46,6 +46,10 @@ class WorkingDomainController: NSViewController {
         
            NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveNameChange_Button:",name:"updateWD", object: nil)
            NSNotificationCenter.defaultCenter().addObserver(self, selector: "rmvFile",name:"remove", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveName",name:"saver", object: nil)
+
+        
     }
     
     
@@ -71,7 +75,18 @@ class WorkingDomainController: NSViewController {
         
     }
     
-   
+    func saveName(){
+        print("Notification")
+        nameOfWD.stringValue = singleton.openedWD
+        print(nameOfWD.stringValue)
+        singleton.coreDataObject.editEntityObject("WorkingDomain", nameOfKey: "nameOfWD", oldName: loadedWDName, editName: nameOfWD.stringValue)
+        loadedWDName = nameOfWD.stringValue
+        singleton.openedWD = loadedWDName
+        NSNotificationCenter.defaultCenter().postNotificationName("update", object: nil)
+        self.reloadFileList()
+        
+        print("Saved!")
+    }
     
     
     @IBAction func saveNameChange_Button(sender: AnyObject) {
@@ -93,6 +108,14 @@ class WorkingDomainController: NSViewController {
     }
     
     
+    @IBAction func EditWD_Button(sender: AnyObject) {
+        
+        singleton.openWindowObject.setWindow("Main", nameOfWindowController: "EditWDWindow")
+        singleton.openWindowObject.runModalWindow()
+        
+        
+        
+    }
     
     
     func updateTableViewWD(){

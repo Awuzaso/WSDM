@@ -94,7 +94,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    
+    @IBAction func launchWSDM_Window(sender: AnyObject){
+        
+        
+        
+        
+        
+        // 1 - Setting window object.
+        let openWindowObject = windowManager()
+        openWindowObject.setWindow("Main",nameOfWindowController: "WorkingDomainManager")
+        // 2 - Setting the values of the window object.
+        let windowController = openWindowObject.get_windowController()
+        let openWindowViewController = windowController.contentViewController as! workingSetManagerViewController
+        // 3 - Initiate the window.
+        windowController.showWindow(sender)
+    }
     
     
     

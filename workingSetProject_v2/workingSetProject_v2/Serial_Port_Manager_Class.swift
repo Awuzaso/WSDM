@@ -44,7 +44,8 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
         serialPort = ORSSerialPort(path: "\(pathName)")
         serialPort?.delegate = self
         serialPort!.baudRate = 115200
-        serialPort!.numberOfStopBits = 1
+        serialPort!.numberOfStopBits = 2
+        
         serialPort!.open()
        
     }
@@ -127,7 +128,10 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
         
             if let string = NSString(data: data, encoding: NSUTF8StringEncoding) {
                 // -3
-                if((string.length == 21) /*&& (string != oldStringVal)*/){
+                var oldStringVal = string
+                //print(string)
+                
+                    if((string.length == 21)  /*&& (string != oldStringVal)*/ ){
                     
                     
                     

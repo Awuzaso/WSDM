@@ -45,8 +45,8 @@ class workingSetManagerViewController: NSViewController {
     /*Function for toggling between off and on state of buttons.*/
     func switchOnOffButtons(openActive:Bool,deleteActive:Bool,associateActive:Bool){
         openWDButton.enabled = openActive
-        deleteWDButton.enabled = deleteActive
-        associateWDButton.enabled  = associateActive
+        //deleteWDButton.enabled = deleteActive
+        //associateWDButton.enabled  = associateActive
     }
 
     
@@ -87,7 +87,7 @@ class workingSetManagerViewController: NSViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeStatus:",name:"load", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTableView:",name:"update", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "launchAssociatedWindow:", name: "associateWindow", object: nil)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "AssociateWDButton", name: "AW", object: nil)
         
        
         
@@ -219,7 +219,15 @@ class workingSetManagerViewController: NSViewController {
         reloadFileList()
     }
     
-    @IBAction func AssociateWDButton(sender: AnyObject) {
+    func AW_notif(){
+        print("Associating...")
+        nameOfWS = singleton.openedWD
+        AssociateWDButton()
+    }
+    
+    
+    
+  func AssociateWDButton() {
         
         singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "tagID", idName: nameOfWS, editName: singleton.rfidValue)
         
@@ -231,7 +239,7 @@ class workingSetManagerViewController: NSViewController {
         // Ending Operation
         
         // Switch off 'AssociateWD' button
-        switchOnOffButtons(true, deleteActive: true, associateActive: false)
+        //switchOnOffButtons(true, deleteActive: true, associateActive: false)
         
         // Reset Value for singleton's rfid_value.
         
@@ -239,7 +247,7 @@ class workingSetManagerViewController: NSViewController {
         singleton.openedWD = nameOfWS
         
         print(singleton.rfidValue)
-        
+        /*
         // 1 - Setting window object.
         let openWindowObject = windowManager()
         openWindowObject.setWindow("Main",nameOfWindowController: "AWindow")
@@ -251,8 +259,8 @@ class workingSetManagerViewController: NSViewController {
         
         // 3 - Initiate the window.
         windowController!.showWindow(sender)
-        
-        
+        &/
+        */
     }
 }
 

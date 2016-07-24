@@ -30,7 +30,7 @@ class Edit_User_Settings_Window: NSViewController {
         portPath = "/dev/cu."+port
         
         // - 2 Set to objects.
-        singleton.userPrefObject.set_fileDirectory(&dataCore, filePath: File_Directory_Label.stringValue)
+        //singleton.userPrefObject.set_fileDirectory(&dataCore, filePath: File_Directory_Label.stringValue)
         singleton.userPrefObject.set_serialPort(&dataCore, portPath: portPath)
         
         
@@ -79,6 +79,12 @@ class Edit_User_Settings_Window: NSViewController {
     
     
     
+    @IBAction func Cancel_Button(sender: AnyObject) {
+        
+         singleton.openWindowObject.stopEvents()
+        
+        
+    }
     
     
     
