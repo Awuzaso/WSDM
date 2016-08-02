@@ -10,10 +10,21 @@ import Cocoa
 
 class EditWorkingDomainController: NSViewController {
 
+    
+    @IBOutlet weak var addCurrentCardButton: NSButton!
+    
+    @IBOutlet weak var removePrevCardButton: NSButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         textLabel.stringValue = singleton.openedWD
         // Do view setup here.
+        if( singleton.canAssociateVar == false ){
+            addCurrentCardButton.enabled = false
+            removePrevCardButton.enabled = false
+            
+        }
     }
     
     
@@ -43,7 +54,7 @@ class EditWorkingDomainController: NSViewController {
         let valueToSend = textLabel.stringValue
         singleton.openedWD = valueToSend
          NSNotificationCenter.defaultCenter().postNotificationName("saver", object: nil)
-        singleton.openWindowObject.stopEvents()
+        //singleton.openWindowObject.stopEvents()
         
     }
     

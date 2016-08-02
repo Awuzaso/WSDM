@@ -20,8 +20,9 @@ class WorkingDomainController: NSViewController {
     @IBOutlet weak var tableViewWD: NSTableView!
     @IBOutlet weak var nameOfWD: NSTextField!
     @IBOutlet weak var associateToCardState: NSTextField!
-    @IBOutlet weak var directoryPath: NSTextField!
+    //@IBOutlet weak var directoryPath: NSTextField!
     
+    @IBOutlet weak var pathControl: NSPathControl!
     
     
     
@@ -29,6 +30,7 @@ class WorkingDomainController: NSViewController {
     
     /*Variables*/
     //var nameOfWS = "Stuff" //Selected WS
+    var directoryPath:String!
     var selectedFile:String!
     var contentsOfWD = [NSManagedObject]() //Stores instances of entity 'Working-Set'
     /*Variables for Sorting Table View*/
@@ -61,6 +63,13 @@ class WorkingDomainController: NSViewController {
         nameOfWD.stringValue = singleton.openedWD
         loadedWDName = nameOfWD.stringValue
         setupTableView()
+        
+        
+        
+        let registeredTypes:[String] = [NSStringPboardType]
+        tableViewWD.registerForDraggedTypes(registeredTypes)
+        NSLog(tableViewWD.registeredDraggedTypes.description)
+        
         
     }
 

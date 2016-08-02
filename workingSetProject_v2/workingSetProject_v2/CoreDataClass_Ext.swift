@@ -407,6 +407,43 @@ extension dataCore{
     
     
     
+    /*Used to evaluate if a card is within an entity's object graph.*/
+    func evaluateIfCardIsInDB(nameOfEntity: String, nameOfKey: String, nameOfObject: String)->Bool{
+        var evalVal: Bool!
+        
+        // 1 - Fetching
+        let fetchRequest = get_fetchRequest(nameOfEntity, nameOfKey: nameOfKey, nameOfObject: nameOfObject)
+        
+        // 2 - Get array of NSAnyObject
+        let result = get_result(fetchRequest)
+        
+        // 3 - Evaluate.
+        if(result.count == 0){
+            
+            evalVal = false
+            
+            // Add Card to DB
+            self.addEntityObject("Card", nameOfKey: "rfidValue", nameOfObject: nameOfObject)
+            
+            
+            
+            // Test if Saved:
+            let testObject = self.getEntityObject("Card", idKey: "rfidValue", idName: nameOfObject)
+            print("Here is the saved object:\n")
+            print("\n")
+            print(testObject)
+        }
+        else{
+            print( "Card is in database." )
+            evalVal = true
+        }
+        
+        // 4 - Return 'evalVal'.
+        return evalVal
+    }
+    
+    
+    
     // RELAITONSHIP FUNCTIONS
     
     func createRelationship(objectOne:NSManagedObject,objectTwo:NSManagedObject,relationshipType:String){

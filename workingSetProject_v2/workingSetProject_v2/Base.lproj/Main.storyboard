@@ -403,7 +403,7 @@
             <objects>
                 <windowController storyboardIdentifier="WorkingDomainManager" id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Working Set Domain Manager" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -420,8 +420,8 @@
         <scene sceneID="o4v-Ws-bHV">
             <objects>
                 <windowController storyboardIdentifier="AWindow" id="ejn-sp-8dc" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="pWX-mU-Sh9">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                    <window key="window" title="Working Domain" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="pWX-mU-Sh9" customClass="WorkingDomainWindow" customModule="workingSetProject_v2" customModuleProvider="target">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="163" y="175" width="295" height="519"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1280" height="720"/>
@@ -747,22 +747,6 @@ DQ
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lp2-0G-QUQ">
-                                <rect key="frame" x="13" y="65" width="165" height="17"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Directory of Selected File:" id="nXi-Sq-UlQ">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wcq-rv-JbE">
-                                <rect key="frame" x="13" y="20" width="260" height="37"/>
-                                <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" title="Directory" id="qg0-d9-XLS">
-                                    <font key="font" metaFont="system" size="10"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xmu-ST-gHH">
                                 <rect key="frame" x="20" y="416" width="264" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" title="Label" drawsBackground="YES" id="N9H-Rf-lUy">
@@ -772,7 +756,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0b2-nQ-IuK">
-                                <rect key="frame" x="123" y="131" width="167" height="32"/>
+                                <rect key="frame" x="123" y="124" width="167" height="32"/>
                                 <buttonCell key="cell" type="push" title="Edit Working Domain" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uis-Lj-62c">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -781,11 +765,18 @@ DQ
                                     <action selector="EditWD_Button:" target="DDv-9m-YAT" id="oeG-UK-0eK"/>
                                 </connections>
                             </button>
+                            <pathControl verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Gl-QU-llo">
+                                <rect key="frame" x="20" y="20" width="269" height="22"/>
+                                <pathCell key="cell" selectable="YES" alignment="left" id="tl4-Jn-UoZ">
+                                    <font key="font" metaFont="system"/>
+                                    <url key="url" string="file:///Desktop"/>
+                                </pathCell>
+                            </pathControl>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="directoryPath" destination="Wcq-rv-JbE" id="0EV-h5-dhE"/>
                         <outlet property="nameOfWD" destination="xmu-ST-gHH" id="hNh-1a-YVM"/>
+                        <outlet property="pathControl" destination="4Gl-QU-llo" id="6Ei-B1-V7b"/>
                         <outlet property="tableViewWD" destination="E86-8P-LXp" id="ceL-hT-GLS"/>
                     </connections>
                 </viewController>
@@ -798,7 +789,7 @@ DQ
             <objects>
                 <windowController storyboardIdentifier="EditWDWindow" id="7kh-Ia-dJI" sceneMemberID="viewController">
                     <window key="window" title="Edit Working Domain" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="vK1-Tt-Uo7">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="686" y="756" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="3840" height="2137"/>
@@ -819,19 +810,9 @@ DQ
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OpI-kO-ed3">
-                                <rect key="frame" x="134" y="13" width="70" height="32"/>
-                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3ms-kW-VqE">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="save_Button:" target="0FK-7f-6Ev" id="hBV-Tj-NMo"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="clT-ls-TLA">
-                                <rect key="frame" x="283" y="13" width="82" height="32"/>
-                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VQ5-uP-WbS">
+                                <rect key="frame" x="287" y="13" width="75" height="32"/>
+                                <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VQ5-uP-WbS">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <string key="keyEquivalent" base64-UTF8="YES">
@@ -941,10 +922,22 @@ Gw
                                     <action selector="addCurrentCard_Button:" target="0FK-7f-6Ev" id="zeD-uN-0ew"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OpI-kO-ed3">
+                                <rect key="frame" x="396" y="199" width="70" height="32"/>
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3ms-kW-VqE">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="save_Button:" target="0FK-7f-6Ev" id="hBV-Tj-NMo"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="addCurrentCardButton" destination="rRT-A5-OYJ" id="1aK-4B-APx"/>
                         <outlet property="addCurrentCard_Button" destination="rRT-A5-OYJ" id="vfF-uE-4TW"/>
+                        <outlet property="removePrevCardButton" destination="hZL-zi-N4w" id="DF9-34-rLf"/>
                         <outlet property="removePrevCard_Button" destination="hZL-zi-N4w" id="Mfk-c5-QU4"/>
                         <outlet property="tableViewEWD" destination="IOV-su-Jt2" id="JVH-9Y-ebh"/>
                         <outlet property="textLabel" destination="OQz-Zh-Z5Q" id="Cti-OI-Vle"/>
@@ -970,6 +963,26 @@ Gw
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGr-8B-LG6">
+                                <rect key="frame" x="14" y="13" width="198" height="32"/>
+                                <buttonCell key="cell" type="push" title="Add New Working Domain" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LQv-LD-O29">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="addNewWDButton:" target="XfG-lQ-9wD" id="lJb-yq-9j6"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2bG-JN-kPy">
+                                <rect key="frame" x="292" y="13" width="176" height="32"/>
+                                <buttonCell key="cell" type="push" title="Open Working Domain" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jqd-dc-dZD">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openWDButton:" target="XfG-lQ-9wD" id="0gK-Or-Tth"/>
+                                </connections>
+                            </button>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dm3-mx-4s1">
                                 <rect key="frame" x="20" y="51" width="440" height="157"/>
                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="EI6-dl-zSX">
@@ -1065,26 +1078,6 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PGr-8B-LG6">
-                                <rect key="frame" x="14" y="13" width="198" height="32"/>
-                                <buttonCell key="cell" type="push" title="Add New Working Domain" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LQv-LD-O29">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="addNewWDButton:" target="XfG-lQ-9wD" id="lJb-yq-9j6"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2bG-JN-kPy">
-                                <rect key="frame" x="292" y="13" width="176" height="32"/>
-                                <buttonCell key="cell" type="push" title="Open Working Domain" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jqd-dc-dZD">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="openWDButton:" target="XfG-lQ-9wD" id="0gK-Or-Tth"/>
-                                </connections>
-                            </button>
                         </subviews>
                     </view>
                     <connections>

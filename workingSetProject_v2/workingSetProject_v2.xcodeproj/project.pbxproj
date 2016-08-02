@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		4C2522AA1D442C320040A640 /* EditWorkingDomainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2522A91D442C320040A640 /* EditWorkingDomainController.swift */; };
+		4C3A66AD1D511FD500653D66 /* AppDelegate_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3A66AC1D511FD500653D66 /* AppDelegate_Ext.swift */; };
 		4C723AA91D2966CB00E3CB51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C723AA81D2966CB00E3CB51 /* AppDelegate.swift */; };
 		4C723AAB1D2966CB00E3CB51 /* workingSetManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C723AAA1D2966CB00E3CB51 /* workingSetManagerViewController.swift */; };
 		4C723AB01D2966CB00E3CB51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C723AAF1D2966CB00E3CB51 /* Assets.xcassets */; };
 		4C723AB31D2966CB00E3CB51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C723AB11D2966CB00E3CB51 /* Main.storyboard */; };
 		4C723ABE1D2972CD00E3CB51 /* CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C723ABD1D2972CD00E3CB51 /* CoreDataClass.swift */; };
 		4C723AC21D29743000E3CB51 /* CoreDataClass_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C723AC11D29743000E3CB51 /* CoreDataClass_Ext.swift */; };
-		4C723AC71D29798700E3CB51 /* workingSetManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C723AC61D29798700E3CB51 /* workingSetManagerModel.swift */; };
 		4C723AD41D297AC800E3CB51 /* ORSSerialBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C723ACA1D297AC800E3CB51 /* ORSSerialBuffer.m */; };
 		4C723AD51D297AC800E3CB51 /* ORSSerialPacketDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C723ACC1D297AC800E3CB51 /* ORSSerialPacketDescriptor.m */; };
 		4C723AD61D297AC800E3CB51 /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C723ACE1D297AC800E3CB51 /* ORSSerialPort.m */; };
@@ -33,12 +33,15 @@
 		4CD086A51D31C92600686ED7 /* WorkingDomainController_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD086A41D31C92600686ED7 /* WorkingDomainController_Ext.swift */; };
 		4CD086A71D31CE1700686ED7 /* tableViewManagerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD086A61D31CE1700686ED7 /* tableViewManagerClass.swift */; };
 		4CD086A91D31D10B00686ED7 /* workingSetManagerViewController_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD086A81D31D10B00686ED7 /* workingSetManagerViewController_Ext.swift */; };
+		4CE737331D4457B800FDF6F9 /* WorkingDomainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE737321D4457B800FDF6F9 /* WorkingDomainWindow.swift */; };
 		4CF507651D2C28D600B3ED7D /* User_Pref_Manager_Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF507641D2C28D600B3ED7D /* User_Pref_Manager_Class.swift */; };
 		4CF507681D2C582E00B3ED7D /* UnAssociated_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF507661D2C582E00B3ED7D /* UnAssociated_View.swift */; };
+		4CF5C6441D4807BC00343D57 /* WorkingDomainController_DragExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF5C6431D4807BC00343D57 /* WorkingDomainController_DragExt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4C2522A91D442C320040A640 /* EditWorkingDomainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWorkingDomainController.swift; sourceTree = "<group>"; };
+		4C3A66AC1D511FD500653D66 /* AppDelegate_Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate_Ext.swift; sourceTree = "<group>"; };
 		4C723AA51D2966CB00E3CB51 /* workingSetProject_v2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = workingSetProject_v2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C723AA81D2966CB00E3CB51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C723AAA1D2966CB00E3CB51 /* workingSetManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = workingSetManagerViewController.swift; sourceTree = "<group>"; };
@@ -47,7 +50,6 @@
 		4C723AB41D2966CB00E3CB51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C723ABD1D2972CD00E3CB51 /* CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataClass.swift; sourceTree = "<group>"; };
 		4C723AC11D29743000E3CB51 /* CoreDataClass_Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataClass_Ext.swift; sourceTree = "<group>"; };
-		4C723AC61D29798700E3CB51 /* workingSetManagerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = workingSetManagerModel.swift; sourceTree = "<group>"; };
 		4C723AC81D297AC700E3CB51 /* workingSetProject_v2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "workingSetProject_v2-Bridging-Header.h"; sourceTree = "<group>"; };
 		4C723AC91D297AC800E3CB51 /* ORSSerialBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialBuffer.h; sourceTree = "<group>"; };
 		4C723ACA1D297AC800E3CB51 /* ORSSerialBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialBuffer.m; sourceTree = "<group>"; };
@@ -72,8 +74,10 @@
 		4CD086A41D31C92600686ED7 /* WorkingDomainController_Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingDomainController_Ext.swift; sourceTree = "<group>"; };
 		4CD086A61D31CE1700686ED7 /* tableViewManagerClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableViewManagerClass.swift; sourceTree = "<group>"; };
 		4CD086A81D31D10B00686ED7 /* workingSetManagerViewController_Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = workingSetManagerViewController_Ext.swift; sourceTree = "<group>"; };
+		4CE737321D4457B800FDF6F9 /* WorkingDomainWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingDomainWindow.swift; sourceTree = "<group>"; };
 		4CF507641D2C28D600B3ED7D /* User_Pref_Manager_Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User_Pref_Manager_Class.swift; sourceTree = "<group>"; };
 		4CF507661D2C582E00B3ED7D /* UnAssociated_View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnAssociated_View.swift; sourceTree = "<group>"; };
+		4CF5C6431D4807BC00343D57 /* WorkingDomainController_DragExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingDomainController_DragExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				4C723AA81D2966CB00E3CB51 /* AppDelegate.swift */,
+				4C3A66AC1D511FD500653D66 /* AppDelegate_Ext.swift */,
 			);
 			name = appDelegate;
 			sourceTree = "<group>";
@@ -208,8 +213,10 @@
 			children = (
 				4C723AE41D2B838B00E3CB51 /* WorkingDomainController.swift */,
 				4CD086A41D31C92600686ED7 /* WorkingDomainController_Ext.swift */,
+				4CF5C6431D4807BC00343D57 /* WorkingDomainController_DragExt.swift */,
 				4CD086A61D31CE1700686ED7 /* tableViewManagerClass.swift */,
 				4CD075E91D3DDD1D009DAE45 /* removeWindow.swift */,
+				4CE737321D4457B800FDF6F9 /* WorkingDomainWindow.swift */,
 			);
 			name = WorkingDomain_Class;
 			sourceTree = "<group>";
@@ -228,7 +235,6 @@
 			children = (
 				4C723AAA1D2966CB00E3CB51 /* workingSetManagerViewController.swift */,
 				4CD086A81D31D10B00686ED7 /* workingSetManagerViewController_Ext.swift */,
-				4C723AC61D29798700E3CB51 /* workingSetManagerModel.swift */,
 			);
 			name = WorkingDomainManager_Class;
 			sourceTree = "<group>";
@@ -319,8 +325,8 @@
 				4CD075E61D3D8DD8009DAE45 /* workingSetProject_v2.xcdatamodeld in Sources */,
 				4C723AD61D297AC800E3CB51 /* ORSSerialPort.m in Sources */,
 				4C723ADD1D2B0C8600E3CB51 /* WindowManagerClass.swift in Sources */,
-				4C723AC71D29798700E3CB51 /* workingSetManagerModel.swift in Sources */,
 				4CD075EA1D3DDD1D009DAE45 /* removeWindow.swift in Sources */,
+				4CE737331D4457B800FDF6F9 /* WorkingDomainWindow.swift in Sources */,
 				4C723AE81D2B871B00E3CB51 /* Edit_User_Settings_Window.swift in Sources */,
 				4C723AE51D2B838B00E3CB51 /* WorkingDomainController.swift in Sources */,
 				4C723AD41D297AC800E3CB51 /* ORSSerialBuffer.m in Sources */,
@@ -329,9 +335,11 @@
 				4C723AD71D297AC800E3CB51 /* ORSSerialPortManager.m in Sources */,
 				4CF507681D2C582E00B3ED7D /* UnAssociated_View.swift in Sources */,
 				4C723AD81D297AC800E3CB51 /* ORSSerialRequest.m in Sources */,
+				4CF5C6441D4807BC00343D57 /* WorkingDomainController_DragExt.swift in Sources */,
 				4C723AD91D297AC800E3CB51 /* Serial_Port_Manager_Class.swift in Sources */,
 				4C9312661D31BDFD0000F252 /* Directory.swift in Sources */,
 				4CD086A51D31C92600686ED7 /* WorkingDomainController_Ext.swift in Sources */,
+				4C3A66AD1D511FD500653D66 /* AppDelegate_Ext.swift in Sources */,
 				4C723ABE1D2972CD00E3CB51 /* CoreDataClass.swift in Sources */,
 				4C723AAB1D2966CB00E3CB51 /* workingSetManagerViewController.swift in Sources */,
 				4C723AD51D297AC800E3CB51 /* ORSSerialPacketDescriptor.m in Sources */,

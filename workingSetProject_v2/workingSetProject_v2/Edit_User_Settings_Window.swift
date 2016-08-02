@@ -63,12 +63,12 @@ class Edit_User_Settings_Window: NSViewController {
         port = Serial_Port_Label.itemTitleAtIndex(selectedIndex)
         portPath = "/dev/cu."+port
         //print(portPath)
-        singleton.userPrefObject.set_fileDirectory(&dataCore, filePath: File_Directory_Label.stringValue)
+        //singleton.userPrefObject.set_fileDirectory(&dataCore, filePath: File_Directory_Label.stringValue)
         singleton.userPrefObject.set_serialPort(&dataCore, portPath: portPath)
         
         singleton.serialPortObject = SerialPortManager(pathName: portPath ,in_nameOfStoryBoard: "Main" ,in_nameOfWinUnAssoc:"UAWindow",  in_nameOfWinAssoc: "AWindow")
         //Test if it works:
-        print(singleton.coreDataObject.getSingleObjectAttrib("User_Attr", nameOfKey: "pathToSaveWS"))
+        //print(singleton.coreDataObject.getSingleObjectAttrib("User_Attr", nameOfKey: "pathToSaveWS"))
         print(singleton.coreDataObject.getSingleObjectAttrib("User_Attr", nameOfKey: "serialPortPath"))
         
         singleton.openWindowObject.stopEvents()

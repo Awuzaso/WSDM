@@ -21,8 +21,9 @@ extension WorkingDomainController : NSTableViewDataSource {
         
         selectedFile =  getItemSelected_String(tableViewWD)
         
-        directoryPath.stringValue = singleton.coreDataObject.getValueOfEntityObject("File", idKey: "nameOfFile", nameOfKey: "nameOfPath", nameOfObject: selectedFile)
-        
+        directoryPath = singleton.coreDataObject.getValueOfEntityObject("File", idKey: "nameOfFile", nameOfKey: "nameOfPath", nameOfObject: selectedFile)
+        let fileURL = NSURL(fileURLWithPath: directoryPath)
+        pathControl.URL = fileURL
         
         // 3 - Change the status label beneath the table view dynamically as selection changes.
         //statusLabel.stringValue = "Directory Path"

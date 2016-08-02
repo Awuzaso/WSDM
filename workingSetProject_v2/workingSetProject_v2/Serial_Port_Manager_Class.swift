@@ -36,12 +36,18 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
         nameOfStoryboard = in_nameOfStoryBoard
         nameOfWindowIfAssociated = in_nameOfWinAssoc
         nameOfWindowIfUnassociated = in_nameOfWinUnAssoc
-        print(pathName)
-        let pathNameBlue = "/dev/cu.LightBlue-Bean"
-        print( pathNameBlue )
-        //print( serialPortManager.availablePorts )
+       let tpathName = "/dev/cu.Bluetooth-Incoming-Port"
         
         serialPort = ORSSerialPort(path: "\(pathName)")
+        
+        if( serialPort == nil ){
+            print( "Not ready.")
+            serialPort = ORSSerialPort(path: "\(tpathName)")
+        }
+        else{
+            print("Ready.")
+        }
+        
         serialPort?.delegate = self
         serialPort!.baudRate = 115200
         serialPort!.numberOfStopBits = 2
@@ -89,10 +95,11 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
     }
     
     /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
-    func giveIDtoAppDelegate(cardValue:String){
+    /*func giveIDtoAppDelegate(cardValue:String){
         let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.set_CardValue(cardValue)
     }
+    */
     
     /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
     func evaluateIfCardIsInDataBase(cardValue:String)->Bool{
@@ -101,7 +108,7 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
         let dataCore = singleton.coreDataObject
         let in_cardValue = cardValue
         
-        let retVal = dataCore.evaluateIfInDB("WorkingDomain", nameOfKey: "tagID", nameOfObject: in_cardValue)
+        let retVal = dataCore.evaluateIfCardIsInDB("WorkingDomain", nameOfKey: "tagID", nameOfObject: in_cardValue)
         
         return retVal
     }
@@ -129,79 +136,18 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
             if let string = NSString(data: data, encoding: NSUTF8StringEncoding) {
                 // -3
                 var oldStringVal = string
-                //print(string)
                 
-                    if((string.length == 21)  /*&& (string != oldStringVal)*/ ){
-                    
-                    
-                    
-                    
-                    
-                    stringVar = string as String
-                    
-                    // -4
-                    oldStringVal = string
+                //Evaluate if read card is in "Card" entity.
+                if (string.length == 21){
                     let sendVal = (string as NSString).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                     
-                    
-                    
-                    
-                    //giveIDtoAppDelegate(sendVal)
-                    singleton.rfidValue = sendVal
-                    
-                    print( singleton.rfidValue )
-                    
-                    
-                    
-                    
-                    
-                    let eval = evaluateIfCardIsInDataBase(sendVal)
-                    
-                    
-                    print("It is \(eval) that the card is in the database.")
-                    if( eval == false){
-                        print("Unassociated")
-                        //launchWindow(nameOfWindowIfUnassociated)
-                        
-                        // 1 - Setting window object.
-                        let openWindowObject = windowManager()
-                        openWindowObject.setWindow("Main",nameOfWindowController: "UAWindow"/*nameOfWindowIfUnassociated*/)
-                        // 2 - Initiate the window.
-                        openWindowObject.runModalWindow()
-                        
-                        
-                        /*
-                        // 1 - Setting window object.
-                        
-                        openWindowObject.setWindow("Main",nameOfWindowController: "WorkingDomainManager")
-                        // 2 - Setting the values of the window object.
-                        let openWindowController = openWindowObject.get_windowController()
-                        let openWindowViewController = openWindowController.contentViewController as! workingSetManagerViewController
-                        openWindowViewController.switchOnOffButtons(true, deleteActive: true, associateActive: true)
-                        openWindowViewController.awakeFromNib()
-                        */
-                        
-                    NSNotificationCenter.defaultCenter().postNotificationName("load", object: nil)
-                        
-                        
-                        
-                        
-
-                        
-                    }
-                    else if( eval == true){
-                        print("Associated")
-                        
-                        print("Check out:")
-                        singleton.openedWD = singleton.coreDataObject.getValueOfEntityObject("WorkingDomain",  idKey:"tagID", nameOfKey:"nameOfWD",nameOfObject: singleton.rfidValue)
-                        
-                        
-                        NSNotificationCenter.defaultCenter().postNotificationName("associateWindow", object: nil)
-                        print("Do it.")
-                        
-                    }
-                    
+                    let cardIsInDB = singleton.coreDataObject.evaluateIfCardIsInDB("Card", nameOfKey: "rfidValue", nameOfObject: sendVal)
+                    print(cardIsInDB)
+                    singleton.readCard = singleton.coreDataObject.getEntityObject("Card", idKey: "rfidValue", idName: sendVal)
+                    print(singleton.readCard.valueForKey("rfidValue"))
+                    singleton.canAssociateVar = true
                 }
+                
             }
     }
     

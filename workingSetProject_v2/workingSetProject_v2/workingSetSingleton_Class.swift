@@ -20,57 +20,36 @@ class workingSetSingleton {
         var serialPortObject: SerialPortManager!
         let userPrefObject = UserPrefManager()
         let openWindowObject = windowManager()
+    
     /*Frequently Used Variables*/
+    
+        // The currently selected 
         var selectedWS:String!
-    var canAssociateVar = false
     
+        // Bool variable that constrains actions on the basis if a card is present or not.
+        var canAssociateVar = false
     
+        // The rfidValue of the currently read card.
+        var rfidValue:String!
     
-    var rfidValue:String!
+        // The current card that is read.
+        var readCard:NSManagedObject!
     
-    var openedWD: String!
-        //var serialPort:String!
-        //var filePath:String!
-    var filePath:String {
-        get{
-            return userPrefObject.get_fileDirectory(&coreDataObject)
-        }
-    }
-    //var serialPath:String! = nil
-    var serialPath:String {
-        get{
-            return userPrefObject.get_serialPort(&coreDataObject)
-        }
-    }
-    /*
-    /*Set Functions*/
+        // The name of the currently opened working domain.
+        var openedWD: String!
     
-        func setSelectedWS(incoming_selectedWS:String){
-            //userPrefObject.set_fileDirectory(&<#T##coreDataObject: dataCore##dataCore#>, filePath: <#T##String#>)
-            selectedWS=incoming_selectedWS
+        // Path to user's preferred file directory.
+        var filePath:String {
+            get{
+                return userPrefObject.get_fileDirectory(&coreDataObject)
+            }
         }
     
-        func setSerialPort(incoming_serialPort:String){
-                serialPort=incoming_serialPort
-            
+        //Path to user's prefferred serial port.
+        var serialPath:String {
+            get{
+                return userPrefObject.get_serialPort(&coreDataObject)
+            }
         }
-            
-        func setFilePath(incoming_filePath:String){
-                filePath = incoming_filePath
-        }
-    
-    /*Get Functions*/
-        func getSelectedWS()->String{
-            return selectedWS
-        }
-    
-        func getSerialPort()->String{
-            return serialPort
-        }
-        
-        func getFilePath()->String{
-            return filePath
-        }
-    */
     
 }

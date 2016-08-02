@@ -14,17 +14,25 @@ extension workingSetManagerViewController : NSTableViewDataSource {
     
     /*This function is called everytime there is a change in the table view.*/
     func updateStatus() {
+        let index = tableView!.selectedRow
+        
+       print( index )
+        
         // 1 - Get collection of objects from object graph.
         workingSets = singleton.coreDataObject.getDataObjects("WorkingDomain")
         
         // 2 - Set the current selection of working set from table view.
         let item = workingSets[tableView!.selectedRow]
-        nameOfWS =  launchWindowTable.getItemSelected_String(tableView, managedObjectArray: workingSets, objectAttr: "nameOfWD")       /*item.valueForKey("smartFOlder") as? String*/
+        
+        //print( item )
+        
+        
+        nameOfWS =  launchWindowTable.getItemSelected_String(tableView, managedObjectArray: workingSets, objectAttr: "nameOfWD")
         
         // 3 - Change the status label beneath the table view dynamically as selection changes.
         //statusLabel.stringValue = launchWindowTable.getStatusOfItemsSelected(tableView, itemCount: workingSets.count)
         
-        print(nameOfWS)
+        //print(nameOfWS)
         
         // 4 - When a working set is seleted from the table view, launch window buttons are then made available to be pressed.
         switchOnOffButtons(true,deleteActive: true,associateActive: false)
@@ -32,8 +40,17 @@ extension workingSetManagerViewController : NSTableViewDataSource {
     
     
     func tableViewDoubleClick(sender: AnyObject) {
-        singleton.openedWD = nameOfWS
-        self.openWDButton(self)
+        
+        if(nameOfWS != nil){
+            singleton.openedWD = nameOfWS
+            self.openWDButton(self)
+            nameOfWS = nil
+        }
+        else{
+            print("Nothing is selected.")
+            openWDButton.enabled = false
+        }
+        
     }
     
     
@@ -60,27 +77,6 @@ extension workingSetManagerViewController : NSTableViewDataSource {
     // Function sets the sorting schema, then calls on "reloadFileList()" to actually change table view.
     func tableView(tableView: NSTableView, sortDescriptorsDidChange oldDescriptors: [NSSortDescriptor]) {
         print("Starting sort.")
-        
-        
-        
-        
-        /*
-        //1
-        guard let sortDescriptor = tableView.sortDescriptors.first else {
-            print("Sort unable to start.")
-            return
-        }
-        if let order = Directory.FileOrder(rawValue: sortDescriptor.key! ) {
-            print("Sorting.")
-            //2.
-         
-            // Values to initialize in order to sort array.
-            sortOrder = order
-            sortAscending = sortDescriptor.ascending
-            reloadFileList()
-        }
-        */
-        
     }
 
     

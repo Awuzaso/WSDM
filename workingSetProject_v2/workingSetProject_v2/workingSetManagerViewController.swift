@@ -228,9 +228,21 @@ class workingSetManagerViewController: NSViewController {
     
     
   func AssociateWDButton() {
-        
+        let openedWD = singleton.coreDataObject.getEntityObject("WorkingDomain", idKey: "nameOfWD", idName: singleton.openedWD)
+    
+        singleton.coreDataObject.createRelationship(openedWD, objectTwo: singleton.readCard, relationshipType: "associatedCard")
+    
+        //print("Object, \(openedWD.valueForKey("nameOfWD")) is associated with card, \(singleton.readCard.valueForKey("rfidValue"))")
+    
+        //let associatedCard = openedWD.valueForKey("associatedCard")
+        //print(associatedCard)
+        print( openedWD )
+    
+    
+    
+    /*
         singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "tagID", idName: nameOfWS, editName: singleton.rfidValue)
-        
+      */
         
         //singleton.coreDataObject.
         
@@ -242,11 +254,15 @@ class workingSetManagerViewController: NSViewController {
         //switchOnOffButtons(true, deleteActive: true, associateActive: false)
         
         // Reset Value for singleton's rfid_value.
-        
+    
+        /*
         singleton.rfidValue = "NONE"
         singleton.openedWD = nameOfWS
         
         print(singleton.rfidValue)
+        */
+    
+    
         /*
         // 1 - Setting window object.
         let openWindowObject = windowManager()
