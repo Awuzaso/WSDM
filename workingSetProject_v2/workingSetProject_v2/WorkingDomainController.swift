@@ -54,7 +54,27 @@ class WorkingDomainController: NSViewController {
         
     }
     
-    
+    func openPath(){
+        
+        let tval = pathControl.clickedPathComponentCell()?.URL?.filePathURL
+        
+        let nval = (tval?.relativePath)! as String
+        
+        print( nval )
+        
+        
+        let value = (pathControl.clickedPathComponentCell()?.URL?.relativeString)! as String
+        //print( value )
+        let openWindowObject = windowManager()
+        
+        let filePath:String!
+        
+        
+        filePath = value
+        
+        
+        NSWorkspace.sharedWorkspace().selectFile(nil, inFileViewerRootedAtPath: nval)
+    }
 
     /*Set-up View*/
     override func viewDidLoad() {
@@ -63,7 +83,7 @@ class WorkingDomainController: NSViewController {
         nameOfWD.stringValue = singleton.openedWD
         loadedWDName = nameOfWD.stringValue
         setupTableView()
-        
+        pathControl.doubleAction = "openPath"
         
         
         let registeredTypes:[String] = [NSStringPboardType]
