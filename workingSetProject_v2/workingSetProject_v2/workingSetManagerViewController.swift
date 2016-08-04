@@ -147,6 +147,15 @@ class workingSetManagerViewController: NSViewController {
     @IBAction func addNewWDButton(sender: AnyObject) {
         print("'Add new button' was pressed.")
         singleton.coreDataObject.addEntityObject("WorkingDomain", nameOfKey: "nameOfWD", nameOfObject: "Untitled Working Domain")
+        
+        
+        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateCreated", idName: "Untitled Working Domain", editName: singleton.getDate("EEEE, MMMM dd, yyyy"))
+        
+        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateLastAccessed", idName: "Untitled Working Domain", editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
+        
+        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "timesAccessed", idName: "Untitled Working Domain", editName: "0" )
+        
+        
         singleton.openedWD = "Untitled Working Domain"
         
         /*
@@ -192,7 +201,9 @@ class workingSetManagerViewController: NSViewController {
         
         singleton.openedWD = nameOfWS
         
+        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateLastAccessed", idName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
         
+        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "timesAccessed", idName: singleton.openedWD, editName: "0" )
         
         
         // 1 - Setting window object.
@@ -228,55 +239,23 @@ class workingSetManagerViewController: NSViewController {
     
     
   func AssociateWDButton() {
+    
+    
         let openedWD = singleton.coreDataObject.getEntityObject("WorkingDomain", idKey: "nameOfWD", idName: singleton.openedWD)
+    
+    
+    
+        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "timesAssociated", idName: singleton.openedWD , editName: "1" )
+    
     
         singleton.coreDataObject.createRelationship(openedWD, objectTwo: singleton.readCard, relationshipType: "associatedCard")
     
-        //print("Object, \(openedWD.valueForKey("nameOfWD")) is associated with card, \(singleton.readCard.valueForKey("rfidValue"))")
     
-        //let associatedCard = openedWD.valueForKey("associatedCard")
-        //print(associatedCard)
         print( openedWD )
     
     
     
-    /*
-        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "tagID", idName: nameOfWS, editName: singleton.rfidValue)
-      */
-        
-        //singleton.coreDataObject.
-        
-        
-        
-        // Ending Operation
-        
-        // Switch off 'AssociateWD' button
-        //switchOnOffButtons(true, deleteActive: true, associateActive: false)
-        
-        // Reset Value for singleton's rfid_value.
     
-        /*
-        singleton.rfidValue = "NONE"
-        singleton.openedWD = nameOfWS
-        
-        print(singleton.rfidValue)
-        */
-    
-    
-        /*
-        // 1 - Setting window object.
-        let openWindowObject = windowManager()
-        openWindowObject.setWindow("Main",nameOfWindowController: "AWindow")
-        // 2 - Setting the values of the window object.
-        windowController = openWindowObject.get_windowController()
-        let openWindowViewController = windowController!.contentViewController as! WorkingDomainController
-        
-        
-        
-        // 3 - Initiate the window.
-        windowController!.showWindow(sender)
-        &/
-        */
     }
 }
 
