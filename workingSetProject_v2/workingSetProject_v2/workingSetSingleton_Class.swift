@@ -51,5 +51,18 @@ class workingSetSingleton {
                 return userPrefObject.get_serialPort(&coreDataObject)
             }
         }
+    func getDate(dateFormat:String)->String{
+        
+        let currentDate = NSDate()
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_GR")
+        dateFormatter.dateFormat = dateFormat
+        
+        //dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
+        var convertedDate = dateFormatter.stringFromDate(currentDate)
+        
+        return convertedDate
+    }
     
 }

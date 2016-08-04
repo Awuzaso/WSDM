@@ -42,6 +42,23 @@ extension AppDelegate{
             
             singleton.coreDataObject.addEntityObject("User_Attr", nameOfKey: "pathToSaveWS", nameOfObject: "Blank")
             
+            
+            let currentDate = NSDate()
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.locale = NSLocale(localeIdentifier: "en_GR")
+            
+            
+            dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
+            var convertedDate = dateFormatter.stringFromDate(currentDate)
+            
+            singleton.coreDataObject.setValueOfEntityObject("User_Attr", idKey: "pathToSaveWS", nameOfKey: "dateCreated", idName: "Blank", editName: singleton.getDate("EEEE, MMMM dd, yyyy"))
+            
+            
+            singleton.coreDataObject.setValueOfEntityObject("User_Attr", idKey: "pathToSaveWS", nameOfKey: "dateLastAccessed", idName: "Blank", editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
+            
+            singleton.coreDataObject.setValueOfEntityObject("User_Attr", idKey: "pathToSaveWS", nameOfKey: "timesAccessed", idName: "Blank", editName: "0")
+            
             // 1 - Setting window object.
             //let openWindowObject = windowManager()
             singleton.openWindowObject.setWindow("Main",nameOfWindowController: "Edit User Settings Window")
