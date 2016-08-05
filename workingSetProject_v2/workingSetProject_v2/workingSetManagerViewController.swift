@@ -148,13 +148,13 @@ class workingSetManagerViewController: NSViewController {
         print("'Add new button' was pressed.")
         singleton.coreDataObject.addEntityObject("WorkingDomain", nameOfKey: "nameOfWD", nameOfObject: "Untitled Working Domain")
         
-        
+        /*
         singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateCreated", idName: "Untitled Working Domain", editName: singleton.getDate("EEEE, MMMM dd, yyyy"))
         
         singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateLastAccessed", idName: "Untitled Working Domain", editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
         
         singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "timesAccessed", idName: "Untitled Working Domain", editName: "0" )
-        
+ */
         
         singleton.openedWD = "Untitled Working Domain"
         
@@ -245,12 +245,12 @@ class workingSetManagerViewController: NSViewController {
     
     
     
-        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "timesAssociated", idName: singleton.openedWD , editName: "1" )
+    
     
     
         singleton.coreDataObject.createRelationship(openedWD, objectTwo: singleton.readCard, relationshipType: "associatedCard")
     
-    
+    singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "timesAssociated", idName: singleton.openedWD , editName: "1" )
         print( openedWD )
     
     

@@ -41,7 +41,7 @@ extension AppDelegate{
             print("No profile detected!")
             
             singleton.coreDataObject.addEntityObject("User_Attr", nameOfKey: "pathToSaveWS", nameOfObject: "Blank")
-            
+            /*
             
             let currentDate = NSDate()
             
@@ -58,7 +58,7 @@ extension AppDelegate{
             singleton.coreDataObject.setValueOfEntityObject("User_Attr", idKey: "pathToSaveWS", nameOfKey: "dateLastAccessed", idName: "Blank", editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
             
             singleton.coreDataObject.setValueOfEntityObject("User_Attr", idKey: "pathToSaveWS", nameOfKey: "timesAccessed", idName: "Blank", editName: "0")
-            
+            */
             // 1 - Setting window object.
             //let openWindowObject = windowManager()
             singleton.openWindowObject.setWindow("Main",nameOfWindowController: "Edit User Settings Window")

@@ -27,6 +27,7 @@
 		4C723AE51D2B838B00E3CB51 /* WorkingDomainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C723AE41D2B838B00E3CB51 /* WorkingDomainController.swift */; };
 		4C723AE81D2B871B00E3CB51 /* Edit_User_Settings_Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C723AE71D2B871B00E3CB51 /* Edit_User_Settings_Window.swift */; };
 		4C9312661D31BDFD0000F252 /* Directory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9312651D31BDFD0000F252 /* Directory.swift */; };
+		4CA939671D5419FA00495ACB /* EditWorkingDomainController_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA939661D5419FA00495ACB /* EditWorkingDomainController_Ext.swift */; };
 		4CC51E821D35929A003BBD04 /* dropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC51E811D35929A003BBD04 /* dropView.swift */; };
 		4CD075E61D3D8DD8009DAE45 /* workingSetProject_v2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CD075E41D3D8DD8009DAE45 /* workingSetProject_v2.xcdatamodeld */; };
 		4CD075EA1D3DDD1D009DAE45 /* removeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD075E91D3DDD1D009DAE45 /* removeWindow.swift */; };
@@ -68,6 +69,7 @@
 		4C723AE41D2B838B00E3CB51 /* WorkingDomainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingDomainController.swift; sourceTree = "<group>"; };
 		4C723AE71D2B871B00E3CB51 /* Edit_User_Settings_Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Edit_User_Settings_Window.swift; sourceTree = "<group>"; };
 		4C9312651D31BDFD0000F252 /* Directory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Directory.swift; sourceTree = "<group>"; };
+		4CA939661D5419FA00495ACB /* EditWorkingDomainController_Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWorkingDomainController_Ext.swift; sourceTree = "<group>"; };
 		4CC51E811D35929A003BBD04 /* dropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dropView.swift; sourceTree = "<group>"; };
 		4CD075E51D3D8DD8009DAE45 /* workingSetProject_v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = workingSetProject_v2.xcdatamodel; sourceTree = "<group>"; };
 		4CD075E91D3DDD1D009DAE45 /* removeWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = removeWindow.swift; sourceTree = "<group>"; };
@@ -114,8 +116,6 @@
 				4C723ABA1D29671100E3CB51 /* appDelegate */,
 				4C723AC31D29764B00E3CB51 /* workingSetManager */,
 				4C723ABF1D2972F700E3CB51 /* Supporting Resources */,
-				4CC51E811D35929A003BBD04 /* dropView.swift */,
-				4C2522A91D442C320040A640 /* EditWorkingDomainController.swift */,
 			);
 			path = workingSetProject_v2;
 			sourceTree = "<group>";
@@ -211,12 +211,14 @@
 		4C723AE61D2B839200E3CB51 /* WorkingDomain_Class */ = {
 			isa = PBXGroup;
 			children = (
+				4CA939651D5419B000495ACB /* EditWorkingDomainController */,
 				4C723AE41D2B838B00E3CB51 /* WorkingDomainController.swift */,
 				4CD086A41D31C92600686ED7 /* WorkingDomainController_Ext.swift */,
 				4CF5C6431D4807BC00343D57 /* WorkingDomainController_DragExt.swift */,
 				4CD086A61D31CE1700686ED7 /* tableViewManagerClass.swift */,
 				4CD075E91D3DDD1D009DAE45 /* removeWindow.swift */,
 				4CE737321D4457B800FDF6F9 /* WorkingDomainWindow.swift */,
+				4CC51E811D35929A003BBD04 /* dropView.swift */,
 			);
 			name = WorkingDomain_Class;
 			sourceTree = "<group>";
@@ -237,6 +239,15 @@
 				4CD086A81D31D10B00686ED7 /* workingSetManagerViewController_Ext.swift */,
 			);
 			name = WorkingDomainManager_Class;
+			sourceTree = "<group>";
+		};
+		4CA939651D5419B000495ACB /* EditWorkingDomainController */ = {
+			isa = PBXGroup;
+			children = (
+				4C2522A91D442C320040A640 /* EditWorkingDomainController.swift */,
+				4CA939661D5419FA00495ACB /* EditWorkingDomainController_Ext.swift */,
+			);
+			name = EditWorkingDomainController;
 			sourceTree = "<group>";
 		};
 		4CD086AA1D3233B600686ED7 /* UnAssociatedViewController */ = {
@@ -342,6 +353,7 @@
 				4C3A66AD1D511FD500653D66 /* AppDelegate_Ext.swift in Sources */,
 				4C723ABE1D2972CD00E3CB51 /* CoreDataClass.swift in Sources */,
 				4C723AAB1D2966CB00E3CB51 /* workingSetManagerViewController.swift in Sources */,
+				4CA939671D5419FA00495ACB /* EditWorkingDomainController_Ext.swift in Sources */,
 				4C723AD51D297AC800E3CB51 /* ORSSerialPacketDescriptor.m in Sources */,
 				4C723AA91D2966CB00E3CB51 /* AppDelegate.swift in Sources */,
 				4C723AE21D2B7C1300E3CB51 /* workingSetSingleton_Class.swift in Sources */,

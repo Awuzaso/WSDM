@@ -114,8 +114,8 @@ extension workingSetManagerViewController : NSTableViewDelegate {
         
         // 4 - Value to Fill Table as per Row
         var value = workingSets[row].valueForKey("nameOfWD") as? String
-        var date = workingSets[row].valueForKey("dateLastUsed") as? String
-        print(date)
+        //var date = workingSets[row].valueForKey("dateLastUsed") as? String
+        //print(date)
         // 5 Assign Value in Event that there is no Retrieved Value
         if(value == nil){
             value = "Unnamed"

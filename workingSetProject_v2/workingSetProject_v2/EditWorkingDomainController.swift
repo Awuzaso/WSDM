@@ -34,9 +34,34 @@ class EditWorkingDomainController: NSViewController {
     
  
     @IBAction func addCurrentCard_Button(sender: AnyObject) {
+        //print( singleton.readCard.valueForKey("associatedWD") )
+        //NSNotificationCenter.defaultCenter().postNotificationName("AW", object: nil)
         
-        NSNotificationCenter.defaultCenter().postNotificationName("AW", object: nil)
+        ///*
+        let openedWD = singleton.coreDataObject.getEntityObject("WorkingDomain", idKey: "nameOfWD", idName: singleton.openedWD)
         
+        //print( openedWD )
+        
+        openedWD.setValue(singleton.readCard, forKey: "associatedCards")
+        
+        
+        
+        do{
+            try singleton.coreDataObject.managedObjectContext.save()
+        } catch {
+            let saveError = error as NSError
+            print(saveError)
+        }
+        
+        print( "The associated card for \(openedWD.valueForKey("nameOfWD"))" )
+        print( (openedWD.valueForKey("associatedCards"))?.valueForKey("rfidValue") )
+        
+        //singleton.coreDataObject.createRelationship(openedWD, objectTwo: singleton.readCard, relationshipType: "associatedCards")
+        
+        //singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "timesAssociated", idName: singleton.openedWD , editName: "1" )
+        
+        //print( openedWD )
+        //*/
     }
     
     

@@ -141,10 +141,23 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
                 if (string.length == 21){
                     let sendVal = (string as NSString).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                     
+                    singleton.rfidValue = sendVal
+                    
+                    
                     let cardIsInDB = singleton.coreDataObject.evaluateIfCardIsInDB("Card", nameOfKey: "rfidValue", nameOfObject: sendVal)
-                    print(cardIsInDB)
+                    
+                    if(cardIsInDB == false){
+                        singleton.openWindowObject.setWindow("Main", nameOfWindowController: "UAWindow")
+                        singleton.openWindowObject.runModalWindow()
+
+                    }
+                   
+                    
+                    
+                    
+                   
                     singleton.readCard = singleton.coreDataObject.getEntityObject("Card", idKey: "rfidValue", idName: sendVal)
-                    print(singleton.readCard.valueForKey("rfidValue"))
+                    
                     singleton.canAssociateVar = true
                 }
                 

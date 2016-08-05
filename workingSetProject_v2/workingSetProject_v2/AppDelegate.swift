@@ -23,13 +23,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // PRIMARY FUNCTIONS
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // - 1 Calls function to initialize values for app.
+        
+    
+        
         initializeApp()
+        
+        
+        
+        
         openWindowObject.setWindow("Main",nameOfWindowController: "WorkingDomainManager")
         windowController = openWindowObject.get_windowController()
         
+        
+        
+        
         let object = singleton.coreDataObject.getEntityObject("User_Attr", idKey: "pathToSaveWS", idName: "Blank")
         
-        
+        /*
         singleton.coreDataObject.setValueOfEntityObject("User_Attr", idKey: "pathToSaveWS", nameOfKey: "dateLastAccessed", idName: "Blank", editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
         
          let timesAccessed = singleton.coreDataObject.getValueOfEntityObject("User_Attr", idKey: "pathToSaveWS", nameOfKey: "timesAccessed", nameOfObject: "Blank")
@@ -42,6 +52,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         print( singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss") )
         print(nval)
+ 
+        */
     }
 
     
