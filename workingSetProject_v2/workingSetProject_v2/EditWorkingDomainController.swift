@@ -11,6 +11,23 @@ import Cocoa
 class EditWorkingDomainController: NSViewController {
 
     
+    /*Variables for Sorting Table View*/
+    var sortOrder = Directory.FileOrder.Name
+    var sortAscending = true
+    var directory:Directory?
+    var directoryItems:[Metadata]?
+    
+    /*Variables*/
+    var nameOfCard: String! //Selected WS
+    var cardsAssociated = [NSManagedObject]() //Stores instances of entity 'Working-Set'
+    
+    
+    
+    
+    
+    
+    
+    
     @IBOutlet weak var addCurrentCardButton: NSButton!
     
     @IBOutlet weak var removePrevCardButton: NSButton!
@@ -18,6 +35,19 @@ class EditWorkingDomainController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableViewEWD!.setDelegate(self)
+        tableViewEWD!.setDataSource(self)
+        tableViewEWD!.target = self
+        
+        
+        
+        
+        
+        
+        
+        
+        
         textLabel.stringValue = singleton.openedWD
         // Do view setup here.
         if( singleton.canAssociateVar == false ){
@@ -25,7 +55,17 @@ class EditWorkingDomainController: NSViewController {
             removePrevCardButton.enabled = false
             
         }
+        
+        
+        
+        
     }
+    
+    func reloadFileList() {
+        //directoryItems = directory?.contentsOrderedBy(sortOrder, ascending: sortAscending)   // Calls sorting function. Returns sorted array
+        tableViewEWD!.reloadData()
+    }
+    
     
     
     @IBOutlet weak var tableViewEWD: NSTableView!

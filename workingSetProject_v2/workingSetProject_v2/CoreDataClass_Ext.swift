@@ -369,6 +369,9 @@ extension dataCore{
     
     
     
+    
+    
+    
     /*Used to delete objects specified by 'result' from a given entity.*/
     func deleteFromEntity(result:[AnyObject]){
         // 1 - Loop through array of 'result'.

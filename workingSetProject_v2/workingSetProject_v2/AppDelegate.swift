@@ -24,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // - 1 Calls function to initialize values for app.
         
-    
+        print( singleton.coreDataObject.exportDatabase() )
         
         initializeApp()
         
