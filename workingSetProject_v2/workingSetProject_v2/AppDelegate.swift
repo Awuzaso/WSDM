@@ -35,25 +35,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         windowController = openWindowObject.get_windowController()
         
         
-        
-        
-        let object = singleton.coreDataObject.getEntityObject("User_Attr", idKey: "pathToSaveWS", idName: "Blank")
-        
         /*
-        singleton.coreDataObject.setValueOfEntityObject("User_Attr", idKey: "pathToSaveWS", nameOfKey: "dateLastAccessed", idName: "Blank", editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
         
-         let timesAccessed = singleton.coreDataObject.getValueOfEntityObject("User_Attr", idKey: "pathToSaveWS", nameOfKey: "timesAccessed", nameOfObject: "Blank")
-            var nval = (timesAccessed as NSString).integerValue
-             nval = nval + 1
-        singleton.coreDataObject.setValueOfEntityObject("User_Attr", idKey: "pathToSaveWS", nameOfKey: "timesAccessed", idName: "Blank", editName: "\(nval)")
+        let object = singleton.coreDataObject.getEntityObject("WorkingDomain", idKey: "nameOfWD", idName: "Doo Wop2")
+        
+        let spec = object.mutableSetValueForKey("associatedCards")
         
         
-        print( object )
+        for index in spec{
+            print(spec.valueForKey("nameOfCard") as! String)
+        }
         
-        print( singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss") )
-        print(nval)
- 
         */
+        
+        
     }
 
     

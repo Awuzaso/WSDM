@@ -842,18 +842,18 @@ Gw
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJq-Hh-omF">
                                 <rect key="frame" x="20" y="61" width="215" height="142"/>
                                 <clipView key="contentView" ambiguous="YES" id="BFD-to-zQL">
-                                    <rect key="frame" x="1" y="0.0" width="213" height="141"/>
+                                    <rect key="frame" x="1" y="0.0" width="213" height="126"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="IJk-Vg-wEh" viewBased="YES" id="IOV-su-Jt2">
-                                            <rect key="frame" x="0.0" y="0.0" width="213" height="118"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="226" height="103"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="210" minWidth="40" maxWidth="1000" id="muf-Ht-FUZ">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                <tableColumn identifier="Name" width="210" minWidth="40" maxWidth="1000" id="muf-Ht-FUZ">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Name">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -865,7 +865,7 @@ Gw
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="o5I-AY-UOL">
+                                                        <tableCellView identifier="NameCellID" id="o5I-AY-UOL">
                                                             <rect key="frame" x="1" y="1" width="210" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -884,13 +884,45 @@ Gw
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
+                                                <tableColumn identifier="" width="10" minWidth="10" maxWidth="3.4028234663852886e+38" id="qRN-Vu-eqs">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Date">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="VRG-qS-1MB">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView identifier="DateCellID" id="X1s-6x-wb6">
+                                                            <rect key="frame" x="214" y="1" width="10" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rOp-B7-ZCc">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="17"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="XMS-kZ-e1v">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                            </subviews>
+                                                            <connections>
+                                                                <outlet property="textField" destination="rOp-B7-ZCc" id="erc-3r-b1f"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                </tableColumn>
                                             </tableColumns>
                                         </tableView>
                                     </subviews>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Ru8-ov-F9w">
-                                    <rect key="frame" x="1" y="8" width="0.0" height="15"/>
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Ru8-ov-F9w">
+                                    <rect key="frame" x="1" y="126" width="213" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="bq9-Om-6xZ">
@@ -898,7 +930,7 @@ Gw
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="IJk-Vg-wEh">
-                                    <rect key="frame" x="0.0" y="0.0" width="213" height="23"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="226" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
@@ -912,16 +944,6 @@ Gw
                                     <action selector="removePrevCard_Button:" target="0FK-7f-6Ev" id="DCE-Wq-HM8"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRT-A5-OYJ">
-                                <rect key="frame" x="283" y="166" width="183" height="32"/>
-                                <buttonCell key="cell" type="push" title="Add Current Card" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lk4-Wh-hPH">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="addCurrentCard_Button:" target="0FK-7f-6Ev" id="zeD-uN-0ew"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OpI-kO-ed3">
                                 <rect key="frame" x="396" y="199" width="70" height="32"/>
                                 <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3ms-kW-VqE">
@@ -932,6 +954,16 @@ Gw
                                     <action selector="save_Button:" target="0FK-7f-6Ev" id="hBV-Tj-NMo"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rRT-A5-OYJ">
+                                <rect key="frame" x="283" y="166" width="183" height="32"/>
+                                <buttonCell key="cell" type="push" title="Add Current Card" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lk4-Wh-hPH">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="addCurrentCard_Button:" target="0FK-7f-6Ev" id="zeD-uN-0ew"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -939,7 +971,7 @@ Gw
                         <outlet property="addCurrentCard_Button" destination="rRT-A5-OYJ" id="vfF-uE-4TW"/>
                         <outlet property="removePrevCardButton" destination="hZL-zi-N4w" id="DF9-34-rLf"/>
                         <outlet property="removePrevCard_Button" destination="hZL-zi-N4w" id="Mfk-c5-QU4"/>
-                        <outlet property="tableViewEWD" destination="IOV-su-Jt2" id="JVH-9Y-ebh"/>
+                        <outlet property="tableView" destination="IOV-su-Jt2" id="YBr-4N-AlI"/>
                         <outlet property="textLabel" destination="OQz-Zh-Z5Q" id="Cti-OI-Vle"/>
                     </connections>
                 </viewController>

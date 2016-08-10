@@ -201,9 +201,9 @@ class workingSetManagerViewController: NSViewController {
         
         singleton.openedWD = nameOfWS
         
-        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateLastAccessed", idName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
+        //singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateLastAccessed", idName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
         
-        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "timesAccessed", idName: singleton.openedWD, editName: "0" )
+        //singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "timesAccessed", idName: singleton.openedWD, editName: "0" )
         
         
         // 1 - Setting window object.

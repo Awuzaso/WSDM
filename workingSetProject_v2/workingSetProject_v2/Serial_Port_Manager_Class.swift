@@ -153,10 +153,11 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
                     }
                    
                     
-                    
-                    
-                   
                     singleton.readCard = singleton.coreDataObject.getEntityObject("Card", idKey: "rfidValue", idName: sendVal)
+                    
+                    //let associatedWD = singleton.readCard.valueForKey("associatedWD")
+                    //singleton.openedWD = associatedWD?.valueForKey("nameOfWD") as! String
+                     //NSNotificationCenter.defaultCenter().postNotificationName("associateWindow", object: nil)
                     
                     singleton.canAssociateVar = true
                 }

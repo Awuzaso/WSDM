@@ -25,90 +25,67 @@ class EditWorkingDomainController: NSViewController {
     
     
     
-    
-    
-    
+    @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet weak var textLabel: NSTextField!
     @IBOutlet weak var addCurrentCardButton: NSButton!
-    
     @IBOutlet weak var removePrevCardButton: NSButton!
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        
-        tableViewEWD!.setDelegate(self)
-        tableViewEWD!.setDataSource(self)
-        tableViewEWD!.target = self
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        tableView.setDelegate(self)
+        tableView.setDataSource(self)
         textLabel.stringValue = singleton.openedWD
-        // Do view setup here.
+        
         if( singleton.canAssociateVar == false ){
             addCurrentCardButton.enabled = false
             removePrevCardButton.enabled = false
-            
         }
-        
-        
-        
-        
     }
     
     func reloadFileList() {
         //directoryItems = directory?.contentsOrderedBy(sortOrder, ascending: sortAscending)   // Calls sorting function. Returns sorted array
-        tableViewEWD!.reloadData()
+        tableView.reloadData()
     }
     
     
-    
-    @IBOutlet weak var tableViewEWD: NSTableView!
-    
-    @IBOutlet weak var textLabel: NSTextField!
+    override var representedObject: AnyObject? {
+        didSet {
+           
+                reloadFileList()
+                
+            
+        }
+    }
+
+   
     
  
     @IBAction func addCurrentCard_Button(sender: AnyObject) {
-        //print( singleton.readCard.valueForKey("associatedWD") )
-        //NSNotificationCenter.defaultCenter().postNotificationName("AW", object: nil)
         
-        ///*
         let openedWD = singleton.coreDataObject.getEntityObject("WorkingDomain", idKey: "nameOfWD", idName: singleton.openedWD)
         
-        //print( openedWD )
-        
-        openedWD.setValue(singleton.readCard, forKey: "associatedCards")
+        print("This is the RFID value that's current: \(singleton.readCard.valueForKey("rfidValue") as! String )")
         
         
+        let cards = openedWD.mutableSetValueForKey("associatedCards")
         
-        do{
-            try singleton.coreDataObject.managedObjectContext.save()
-        } catch {
-            let saveError = error as NSError
-            print(saveError)
-        }
+        cards.addObject(singleton.readCard)
         
-        print( "The associated card for \(openedWD.valueForKey("nameOfWD"))" )
-        print( (openedWD.valueForKey("associatedCards"))?.valueForKey("rfidValue") )
+        print( openedWD.valueForKey("associatedCards") )
+        
+        reloadFileList()
         
         //singleton.coreDataObject.createRelationship(openedWD, objectTwo: singleton.readCard, relationshipType: "associatedCards")
         
-        //singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "timesAssociated", idName: singleton.openedWD , editName: "1" )
+        //print(openedWD.valueForKey("associatedCards"))
         
-        //print( openedWD )
-        //*/
+       
     }
     
     
     @IBAction func removePrevCard_Button(sender: AnyObject) {
-        
-        
-        
         
         
     }
@@ -118,20 +95,14 @@ class EditWorkingDomainController: NSViewController {
         print("Saving...")
         let valueToSend = textLabel.stringValue
         singleton.openedWD = valueToSend
-         NSNotificationCenter.defaultCenter().postNotificationName("saver", object: nil)
-        //singleton.openWindowObject.stopEvents()
-        
+        NSNotificationCenter.defaultCenter().postNotificationName("saver", object: nil)
     }
-    
-    
-    
     
     
     @IBAction func cancel_Button(sender: AnyObject) {
-        
         singleton.openWindowObject.stopEvents()
-        
-        
-        
     }
+    
+    
+    
 }
