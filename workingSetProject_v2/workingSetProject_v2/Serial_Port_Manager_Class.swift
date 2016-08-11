@@ -40,6 +40,11 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
         
         serialPort = ORSSerialPort(path: "\(pathName)")
         
+        let descriptor = ORSSerialPacketDescriptor(prefixString: "_", suffixString: "\n" , maximumPacketLength: 34, userInfo: nil)
+        //let descriptor = ORSSerialPacketDescriptor.init
+        serialPort.startListeningForPacketsMatchingDescriptor(descriptor)
+  
+        
         if( serialPort == nil ){
             print( "Not ready.")
             serialPort = ORSSerialPort(path: "\(tpathName)")
@@ -50,7 +55,7 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
         
         serialPort?.delegate = self
         serialPort!.baudRate = 115200
-        serialPort!.numberOfStopBits = 2
+        serialPort!.numberOfStopBits = 1
         
         serialPort!.open()
        
@@ -125,7 +130,50 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
         print("Closed!")
     }
     
+    func serialPort(serialPort: ORSSerialPort, didReceivePacket packetData: NSData, matchingDescriptor descriptor: ORSSerialPacketDescriptor) {
+        if let string = NSString(data: packetData, encoding: NSUTF8StringEncoding) {
+            
+     
+            print( string )
+            
+            
+            
+            let sendVal = (string as NSString).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+            
+            singleton.rfidValue = sendVal
+            
+            
+            let cardIsInDB = singleton.coreDataObject.evaluateIfCardIsInDB("Card", nameOfKey: "rfidValue", nameOfObject: sendVal)
+            
+            if(cardIsInDB == false){
+                singleton.openWindowObject.setWindow("Main", nameOfWindowController: "UAWindow")
+                singleton.openWindowObject.runModalWindow()
+                
+            }
+            else{
+                
+                singleton.readCard = singleton.coreDataObject.getEntityObject("Card", idKey: "rfidValue", idName: sendVal)
+                singleton.canAssociateVar = true
+                
+                let associatedWD = singleton.readCard.valueForKey("associatedWD")
+                
+                let nameOfAssociatedWD = associatedWD?.valueForKey("nameOfWD")
+                
+                if(nameOfAssociatedWD != nil){
+                    singleton.openedWD = associatedWD?.valueForKey("nameOfWD") as! String
+                    NSNotificationCenter.defaultCenter().postNotificationName("associateWindow", object: nil)
+                }
+                
+            }
+            
+        }
+    }
+    
+    
     /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
+    
+    
+    /*
     func serialPort(serialPort: ORSSerialPort, didReceiveData data: NSData) {
             // - 1
             print("Active...")
@@ -137,6 +185,8 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
                 // -3
                 var oldStringVal = string
                 
+                print( string )
+                /*
                 //Evaluate if read card is in "Card" entity.
                 if (string.length == 21){
                     let sendVal = (string as NSString).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
@@ -151,19 +201,28 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
                         singleton.openWindowObject.runModalWindow()
 
                     }
-                   
-                    
-                    singleton.readCard = singleton.coreDataObject.getEntityObject("Card", idKey: "rfidValue", idName: sendVal)
-                    
-                    //let associatedWD = singleton.readCard.valueForKey("associatedWD")
-                    //singleton.openedWD = associatedWD?.valueForKey("nameOfWD") as! String
-                     //NSNotificationCenter.defaultCenter().postNotificationName("associateWindow", object: nil)
-                    
-                    singleton.canAssociateVar = true
-                }
+                    else{
                 
+                       singleton.readCard = singleton.coreDataObject.getEntityObject("Card", idKey: "rfidValue", idName: sendVal)
+                       singleton.canAssociateVar = true
+                        
+                       let associatedWD = singleton.readCard.valueForKey("associatedWD")
+                        
+                        let nameOfAssociatedWD = associatedWD?.valueForKey("nameOfWD")
+                        
+                        if(nameOfAssociatedWD != nil){
+                            singleton.openedWD = associatedWD?.valueForKey("nameOfWD") as! String
+                            NSNotificationCenter.defaultCenter().postNotificationName("associateWindow", object: nil)
+                        }
+                    }
+                 
+                    
+                
+                    
+                }
+                 */
             }
-    }
+    }*/
     
     /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
     func serialPortWasRemovedFromSystem(serialPort: ORSSerialPort) {

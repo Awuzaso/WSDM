@@ -6,7 +6,7 @@
 
 #import "ORSSerialPort.h"
 #import "ORSSerialPortManager.h"
-
+#import "ORSSerialPacketDescriptor.h"
 
 
 #endif
