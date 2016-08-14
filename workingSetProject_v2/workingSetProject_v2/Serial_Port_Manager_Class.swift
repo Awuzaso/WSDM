@@ -117,29 +117,41 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
             let sendVal = (string as NSString).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
             
             
-            
+            // - Bool value to evaluate if card is already in database of not.
             let cardIsInDB = singleton.coreDataObject.evaluateIfCardIsInDB("Card", nameOfKey: "rfidValue", nameOfObject: sendVal)
             
-            if(cardIsInDB == false){
-                singleton.openWindowObject.setWindow("Main", nameOfWindowController: "UAWindow")
-                singleton.openWindowObject.runModalWindow()
-                
-            }
-            else{
-                
-                singleton.readCard = singleton.coreDataObject.getEntityObject("Card", idKey: "rfidValue", idName: sendVal)
-                singleton.canAssociateVar = true
-                
-                let associatedWD = singleton.readCard.valueForKey("associatedWD")
-                
-                let nameOfAssociatedWD = associatedWD?.valueForKey("nameOfWD")
-                
-                if(nameOfAssociatedWD != nil){
-                    singleton.openedWD = associatedWD?.valueForKey("nameOfWD") as! String
-                    NSNotificationCenter.defaultCenter().postNotificationName("associateWindow", object: nil)
+            // - Case if card is in data base.
+                if(cardIsInDB == false){
+                    // - Brings up a modal window to tell user that the card is a new to the database.
+                    singleton.openWindowObject.setWindow("Main", nameOfWindowController: "UAWindow")
+                    singleton.openWindowObject.runModalWindow()
+                    
                 }
-                
-            }
+            // - Case if card read is in the data base.
+                else{
+                    
+                    // - Assigns the value of the currently read card.
+                        singleton.readCard = singleton.coreDataObject.getEntityObject("Card", idKey: "rfidValue", idName: sendVal)
+                        NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
+                    // - Enables the option to associate card.
+                        singleton.canAssociateVar = true
+                    
+                    
+                    // - Retrieves the WD associated with the card and assigns it to a constant to be retrieve from fault.
+                        let associatedWD = singleton.readCard.valueForKey("associatedWD")
+                    
+                    // - Assigns the name of the associated WD.
+                        let nameOfAssociatedWD = associatedWD?.valueForKey("nameOfWD")
+                    
+                    // - Opens WD window associated with card.
+                        if(nameOfAssociatedWD != nil){
+                            // - 1 - Sets the value of the currently opened WD to the name value associated with the card.
+                            singleton.openedWD = associatedWD?.valueForKey("nameOfWD") as! String
+                            NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
+                            NSNotificationCenter.defaultCenter().postNotificationName("associateWindow", object: nil)
+                        }
+                    
+                }
             
         }
     }

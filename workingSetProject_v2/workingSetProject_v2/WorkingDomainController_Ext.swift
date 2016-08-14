@@ -301,10 +301,10 @@ extension WorkingDomainController : NSTableViewDelegate {
                
                 text = value //value!
                 cellIdentifier = "NameCellID"
-            } else if tableColumn == tableView.tableColumns[1] {
+            } /*else if tableColumn == tableView.tableColumns[1] {
                 text = "Value"
                 cellIdentifier = "DateCellID"
-            }
+            }*/
             
             // 7 - Fill cell content.
             if let cell = tableView.makeViewWithIdentifier(cellIdentifier, owner: nil) as? NSTableCellView {

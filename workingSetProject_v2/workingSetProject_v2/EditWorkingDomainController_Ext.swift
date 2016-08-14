@@ -100,20 +100,34 @@ extension EditWorkingDomainController: NSTableViewDelegate{
         if( isEmpty == false){
             
             var associatedObjects : [String] = []
+            var associatedCardName : [String] = []
+            var associatedCardOwner : [String] = []
+            var associatedDate : [String] = []
        
         var text:String = "text"
         var cellIdentifier: String = ""
         
             for i in list{
                 let item = i.valueForKey("rfidValue") as! String
-                print( item )
+                let cardName = i.valueForKey("cardName") as! String
+                let cardOwner = i.valueForKey("cardOwner") as! String
+                let dateLastAccessed = i.valueForKey("dateLastAccessed") as! String
+                //print( item )
                 
                 associatedObjects.append(item)
+                associatedCardName.append(cardName)
+                associatedCardOwner.append(cardOwner)
+                associatedDate.append(dateLastAccessed)
+                
+                
+                
             }
             
             
             var value = associatedObjects[row]
-            
+            var valueName = associatedCardName[row]
+            var valueOwner = associatedCardOwner[row]
+            var valueDate = associatedDate[row]
             
          
             
@@ -123,7 +137,15 @@ extension EditWorkingDomainController: NSTableViewDelegate{
                 text =  value //"thing" //cardsAssociated[row].valueForKey("rfidValue") as! String
                 cellIdentifier = "NameCellID"
             } else if tableColumn == tableView.tableColumns[1] {
-                text = "Thing"
+                text = valueName
+                cellIdentifier = "DateCellID"
+            }
+            else if tableColumn == tableView.tableColumns[2] {
+                text = valueOwner
+                cellIdentifier = "DateCellID"
+            }
+            else if tableColumn == tableView.tableColumns[3] {
+                text = valueDate
                 cellIdentifier = "DateCellID"
             }
             

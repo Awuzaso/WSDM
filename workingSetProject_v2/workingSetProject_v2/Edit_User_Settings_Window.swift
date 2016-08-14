@@ -32,7 +32,7 @@ class Edit_User_Settings_Window: NSViewController {
         
         // - 3 Reset serial port and commit changes.
             singleton.serialPortObject = SerialPortManager(pathName: portPath ,in_nameOfStoryBoard: "Main" ,in_nameOfWinUnAssoc:"UAWindow",  in_nameOfWinAssoc: "AWindow")
-
+            NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
     }
     
     
@@ -48,6 +48,7 @@ class Edit_User_Settings_Window: NSViewController {
         singleton.userPrefObject.set_serialPort(&dataCore, portPath: portPath)
         
         singleton.serialPortObject = SerialPortManager(pathName: portPath ,in_nameOfStoryBoard: "Main" ,in_nameOfWinUnAssoc:"UAWindow",  in_nameOfWinAssoc: "AWindow")
+        NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
         
     }
     

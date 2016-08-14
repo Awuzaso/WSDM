@@ -35,6 +35,7 @@ extension workingSetManagerViewController : NSTableViewDataSource {
         
         if(nameOfWS != nil){
             singleton.openedWD = nameOfWS
+            NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
             self.openWDButton(self)
             nameOfWS = nil
         }

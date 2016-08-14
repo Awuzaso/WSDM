@@ -202,9 +202,9 @@ extension dataCore{
     
     /*Used to get a fetch request object as per arguments.*/
     func get_fetchRequest(nameOfEntity: String, nameOfKey: String, nameOfObject: String)->NSFetchRequest{
-        print("Name of entity is, \(nameOfEntity).")
-        print("Name of search key is, \(nameOfKey).")
-        print("Name of search attribute is, \(nameOfObject)")
+        //print("Name of entity is, \(nameOfEntity).")
+        //print("Name of search key is, \(nameOfKey).")
+        //print("Name of search attribute is, \(nameOfObject)")
         // 1 - Generate 'fetchRequest' object.
         let fetchRequest = NSFetchRequest(entityName: nameOfEntity)
         
@@ -431,13 +431,16 @@ extension dataCore{
             
             
             // Test if Saved:
-            let testObject = self.getEntityObject("Card", idKey: "rfidValue", idName: nameOfObject)
-            print("Here is the saved object:\n")
-            print("\n")
-            print(testObject)
+            let addedCard = self.getEntityObject("Card", idKey: "rfidValue", idName: nameOfObject)
+            self.setValueOfEntityObject("Card", idKey: "rfidValue", nameOfKey: "cardName", idName: nameOfObject, editName: "Untitled Card")
+            self.setValueOfEntityObject("Card", idKey: "rfidValue", nameOfKey: "cardOwner", idName: nameOfObject, editName: "Unnamed Owner")
+            self.setValueOfEntityObject("Card", idKey: "rfidValue", nameOfKey: "dateCreated", idName: nameOfObject, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
+            self.setValueOfEntityObject("Card", idKey: "rfidValue", nameOfKey: "dateLastAccessed", idName: nameOfObject, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
+            
+            //print( addedCard )
         }
         else{
-            print( "Card is in database." )
+            //print( "Card is in database." )
             evalVal = true
         }
         

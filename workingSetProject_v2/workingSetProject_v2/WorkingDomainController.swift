@@ -112,6 +112,7 @@ class WorkingDomainController: NSViewController {
         loadedWDName = nameOfWD.stringValue
         singleton.openedWD = loadedWDName
         NSNotificationCenter.defaultCenter().postNotificationName("update", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
         self.reloadFileList()
         
         print("Saved!")

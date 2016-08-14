@@ -25,7 +25,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // PRIMARY FUNCTIONS
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // - 1 Calls function to initialize values for app.
-            initializeApp()
+        print("Initializing App")
+        
+        initializeApp()
         
         // - 2 - Initialize WSDM window
             init_WSDM_Window()

@@ -19,6 +19,7 @@ class UnAssociated_View: NSViewController {
     
     @IBAction func OK_Button(sender: AnyObject) {
         singleton.canAssociateVar = true
+        NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
         singleton.openWindowObject.stopEvents()
     }
     

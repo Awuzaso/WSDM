@@ -149,6 +149,7 @@ class workingSetManagerViewController: NSViewController {
         
         if(iteration == 0){
             singleton.openedWD = "Untitled Working Domain"
+            NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
             singleton.coreDataObject.addEntityObject("WorkingDomain", nameOfKey: "nameOfWD", nameOfObject: singleton.openedWD)
             //singleton.coreDataObject.editEntityObject("WorkingDomain", nameOfKey: "dateLastAccessed", oldName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
              singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateLastAccessed", idName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
@@ -156,6 +157,7 @@ class workingSetManagerViewController: NSViewController {
         }
         else{
             singleton.openedWD = "Untitled Working Domain \(iteration)"
+            NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
             singleton.coreDataObject.addEntityObject("WorkingDomain", nameOfKey: "nameOfWD", nameOfObject: singleton.openedWD)
             
             singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateLastAccessed", idName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
@@ -202,6 +204,7 @@ class workingSetManagerViewController: NSViewController {
         
         
         // 3 - Initiate the window.
+        NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
         windowController!.showWindow(sender)
  
     }
