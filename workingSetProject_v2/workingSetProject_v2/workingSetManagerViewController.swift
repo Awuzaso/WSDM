@@ -9,36 +9,36 @@
 import Cocoa
 
 class workingSetManagerViewController: NSViewController {
+    
+    
+    
+    
+    var iteration = 0
     var windowController : NSWindowController?
-    
-    
-    
-    
     let launchWindowTable = tableViewManager()
     
     /*Variables for Sorting Table View*/
-    var sortOrder = Directory.FileOrder.Name
-    var sortAscending = true
-    var directory:Directory?
-    var directoryItems:[Metadata]?
+        var sortOrder = Directory.FileOrder.Name
+        var sortAscending = true
+        var directory:Directory?
+        var directoryItems:[Metadata]?
     
     
 
     /*Variables*/
-    var nameOfWS: String! //Selected WS
-    var workingSets = [NSManagedObject]() //Stores instances of entity 'Working-Set'
+        var nameOfWS: String! //Selected WS
+        var workingSets = [NSManagedObject]() //Stores instances of entity 'Working-Set'
     
     
     
     /*Outlets for Table View*/
-    @IBOutlet weak var statusLabel: NSTextField!
+        @IBOutlet weak var statusLabel: NSTextField!
 
     
     /*Outlets for Buttons*/
-    
-    @IBOutlet weak var openWDButton: NSButton!
-    @IBOutlet weak var associateWDButton: NSButton!
-    @IBOutlet weak var deleteWDButton: NSButton!
+        @IBOutlet weak var openWDButton: NSButton!
+        @IBOutlet weak var associateWDButton: NSButton!
+        @IBOutlet weak var deleteWDButton: NSButton!
     
     
     
@@ -146,65 +146,52 @@ class workingSetManagerViewController: NSViewController {
     
     @IBAction func addNewWDButton(sender: AnyObject) {
         print("'Add new button' was pressed.")
-        singleton.coreDataObject.addEntityObject("WorkingDomain", nameOfKey: "nameOfWD", nameOfObject: "Untitled Working Domain")
         
-        /*
-        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateCreated", idName: "Untitled Working Domain", editName: singleton.getDate("EEEE, MMMM dd, yyyy"))
-        
-        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateLastAccessed", idName: "Untitled Working Domain", editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
-        
-        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "timesAccessed", idName: "Untitled Working Domain", editName: "0" )
- */
-        
-        singleton.openedWD = "Untitled Working Domain"
-        
-        /*
-        singleton.coreDataObject.editEntityObject("WorkingDomain", nameOfKey: "dateLastUsed", oldName: "Untitled Working Domain", editName: "today")
-        
-        print(singleton.coreDataObject.getValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateLastUsed", nameOfObject: "Untitled Working Domain"))
-        */
-        
-       
-        
-        // 1 - Setting window object.
-        let openWindowObject = windowManager()
-        openWindowObject.setWindow("Main",nameOfWindowController: "AWindow")
-        // 2 - Setting the values of the window object.
-        windowController = openWindowObject.get_windowController()
-        let openWindowViewController = windowController!.contentViewController as! WorkingDomainController
-        
-        
-        //openWindowViewController.nameOfWD.stringValue = "Untitled Working Domain"
-        
-        //openWindowViewController.loadedWDName = "Untitled Working Domain"
-       
-        
-       
-        
-        // 3 - Initiate the window.
-        windowController!.showWindow(sender)
-
-        
-        
-        
+        if(iteration == 0){
+            singleton.openedWD = "Untitled Working Domain"
+            singleton.coreDataObject.addEntityObject("WorkingDomain", nameOfKey: "nameOfWD", nameOfObject: singleton.openedWD)
+            //singleton.coreDataObject.editEntityObject("WorkingDomain", nameOfKey: "dateLastAccessed", oldName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
+             singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateLastAccessed", idName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
+            iteration = iteration + 1
+        }
+        else{
+            singleton.openedWD = "Untitled Working Domain \(iteration)"
+            singleton.coreDataObject.addEntityObject("WorkingDomain", nameOfKey: "nameOfWD", nameOfObject: singleton.openedWD)
+            
+            singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateLastAccessed", idName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
+            
+            //singleton.coreDataObject.editEntityObject(, nameOfKey: , oldName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
+            iteration = iteration + 1
+        }
         
         reloadFileList()
         
         // Enable buttons.
-        switchOnOffButtons(true,deleteActive: true,associateActive: false)
+            switchOnOffButtons(true,deleteActive: true,associateActive: false)
+        
+       
+        
+        // 1 - Setting window object.
+            let openWindowObject = windowManager()
+            openWindowObject.setWindow("Main",nameOfWindowController: "AWindow")
+        
+        // 2 - Setting the values of the window object.
+            windowController = openWindowObject.get_windowController()
+            let openWindowViewController = windowController!.contentViewController as! WorkingDomainController
+        
+        // 3 - Initiate the window.
+            windowController!.showWindow(sender)
+
     }
     
     
     @IBAction func openWDButton(sender: AnyObject) {
         print("'Open button' was pressed.")
         
-        
         singleton.openedWD = nameOfWS
-        
-        //singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateLastAccessed", idName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
-        
-        //singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "timesAccessed", idName: singleton.openedWD, editName: "0" )
-        
+        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateLastAccessed", idName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
+      reloadFileList()
+        print( singleton.coreDataObject.getEntityObject("WorkingDomain", idKey: "nameOfWD", idName: singleton.openedWD) )
         
         // 1 - Setting window object.
         let openWindowObject = windowManager()
@@ -214,14 +201,8 @@ class workingSetManagerViewController: NSViewController {
         let openWindowViewController = windowController!.contentViewController as! WorkingDomainController
         
         
-       
         // 3 - Initiate the window.
         windowController!.showWindow(sender)
-        
-        
-        
-      
-
  
     }
 
@@ -240,21 +221,9 @@ class workingSetManagerViewController: NSViewController {
     
   func AssociateWDButton() {
     
-    
         let openedWD = singleton.coreDataObject.getEntityObject("WorkingDomain", idKey: "nameOfWD", idName: singleton.openedWD)
     
-    
-    
-    
-    
-    
         singleton.coreDataObject.createRelationship(openedWD, objectTwo: singleton.readCard, relationshipType: "associatedCard")
-    
-    singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "timesAssociated", idName: singleton.openedWD , editName: "1" )
-        print( openedWD )
-    
-    
-    
     
     }
 }

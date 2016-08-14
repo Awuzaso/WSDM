@@ -28,7 +28,6 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
     
     var nameOfWindowIfAssociated: String!
     
-    //var windowController : NSWindowController?
     /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
     init(pathName:String,in_nameOfStoryBoard: String, in_nameOfWinUnAssoc:String, in_nameOfWinAssoc:String){
         super.init()
@@ -66,8 +65,6 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
         var arrayOfPorts_string:[String]!
         var arrayOfPorts = serialPortManager.availablePorts
         
-       
-        
         for(var i = 0; i < arrayOfPorts.count; i += 1){
             print(arrayOfPorts[i])
             let value = "\(arrayOfPorts[i])"
@@ -75,8 +72,6 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
             arrayOfPorts_string[i] = value
         }
         
-        
-  
         return arrayOfPorts_string
     }
     
@@ -86,7 +81,7 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
         // 1
         let storyboard = NSStoryboard(name: "Main", bundle: nil)
         let openWindowController = storyboard.instantiateControllerWithIdentifier(nameOfWindow) as! NSWindowController
-        ///*
+        
         // 2
         if let openModalWindow = openWindowController.window{
             
@@ -95,29 +90,9 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
             application.runModalForWindow(openModalWindow)
             
         }
-        //*/
         
     }
     
-    /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
-    /*func giveIDtoAppDelegate(cardValue:String){
-        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.set_CardValue(cardValue)
-    }
-    */
-    
-    /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
-    func evaluateIfCardIsInDataBase(cardValue:String)->Bool{
-        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-        
-        let dataCore = singleton.coreDataObject
-        let in_cardValue = cardValue
-        
-        let retVal = dataCore.evaluateIfCardIsInDB("WorkingDomain", nameOfKey: "tagID", nameOfObject: in_cardValue)
-        
-        return retVal
-    }
-
     // MARK: - ORSSerialPortDelegate
     
     /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
@@ -130,6 +105,7 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
         print("Closed!")
     }
     
+    /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
     func serialPort(serialPort: ORSSerialPort, didReceivePacket packetData: NSData, matchingDescriptor descriptor: ORSSerialPacketDescriptor) {
         if let string = NSString(data: packetData, encoding: NSUTF8StringEncoding) {
             
@@ -140,7 +116,6 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
             
             let sendVal = (string as NSString).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
             
-            singleton.rfidValue = sendVal
             
             
             let cardIsInDB = singleton.coreDataObject.evaluateIfCardIsInDB("Card", nameOfKey: "rfidValue", nameOfObject: sendVal)
@@ -170,64 +145,12 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
     }
     
     
-    /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
-    
-    
-    /*
-    func serialPort(serialPort: ORSSerialPort, didReceiveData data: NSData) {
-            // - 1
-            print("Active...")
-            // -2
-        
-       
-        
-            if let string = NSString(data: data, encoding: NSUTF8StringEncoding) {
-                // -3
-                var oldStringVal = string
-                
-                print( string )
-                /*
-                //Evaluate if read card is in "Card" entity.
-                if (string.length == 21){
-                    let sendVal = (string as NSString).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                    
-                    singleton.rfidValue = sendVal
-                    
-                    
-                    let cardIsInDB = singleton.coreDataObject.evaluateIfCardIsInDB("Card", nameOfKey: "rfidValue", nameOfObject: sendVal)
-                    
-                    if(cardIsInDB == false){
-                        singleton.openWindowObject.setWindow("Main", nameOfWindowController: "UAWindow")
-                        singleton.openWindowObject.runModalWindow()
-
-                    }
-                    else{
-                
-                       singleton.readCard = singleton.coreDataObject.getEntityObject("Card", idKey: "rfidValue", idName: sendVal)
-                       singleton.canAssociateVar = true
-                        
-                       let associatedWD = singleton.readCard.valueForKey("associatedWD")
-                        
-                        let nameOfAssociatedWD = associatedWD?.valueForKey("nameOfWD")
-                        
-                        if(nameOfAssociatedWD != nil){
-                            singleton.openedWD = associatedWD?.valueForKey("nameOfWD") as! String
-                            NSNotificationCenter.defaultCenter().postNotificationName("associateWindow", object: nil)
-                        }
-                    }
-                 
-                    
-                
-                    
-                }
-                 */
-            }
-    }*/
     
     /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
     func serialPortWasRemovedFromSystem(serialPort: ORSSerialPort) {
         print("Serial port, \(serialPort) was removed from the system.")
     }
+    
     
 
     /*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
@@ -235,6 +158,8 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
         print("Serial port, \(error) was removed from the system.")
         
     }
+    
+    
 /*END OF CLASS*/
 
 }

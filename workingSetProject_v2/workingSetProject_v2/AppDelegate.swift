@@ -14,62 +14,43 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
    
     
+        /*Sets up constants.*/
+            let openWindowObject = windowManager()
     
-    let openWindowObject = windowManager()
-    var windowController = NSWindowController()
-    var serialPortObject: SerialPortManager!
+        /*Sets up varuables.*/
+            var windowController = NSWindowController()
+            var serialPortObject: SerialPortManager!
   
 
     // PRIMARY FUNCTIONS
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // - 1 Calls function to initialize values for app.
+            initializeApp()
         
-        print( singleton.coreDataObject.exportDatabase() )
+        // - 2 - Initialize WSDM window
+            init_WSDM_Window()
         
-        initializeApp()
-        
-        
-        
-        
-        openWindowObject.setWindow("Main",nameOfWindowController: "WorkingDomainManager")
-        windowController = openWindowObject.get_windowController()
-        
-        
-        /*
-        
-        let object = singleton.coreDataObject.getEntityObject("WorkingDomain", idKey: "nameOfWD", idName: "Doo Wop2")
-        
-        let spec = object.mutableSetValueForKey("associatedCards")
-        
-        
-        for index in spec{
-            print(spec.valueForKey("nameOfCard") as! String)
-        }
-        
-        */
-        
+        // - 3 - Launch WSDM window.
+            launchWSDM_Window(self)
         
     }
 
     
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
-        print("WSDM is closing.")
     }
 
-    
-    
     // INTERFACE FUNCTIONS
     @IBAction func launchWSDM_Window(sender: AnyObject){
-        // - 1 Launches WSDM window.
-        windowController.showWindow(sender)
+        // - 1 Launches preivously set up WSDM window.
+            windowController.showWindow(sender)
     }
     
-    
-    
     @IBAction func launchWindowManager(sender: AnyObject){
-        singleton.openWindowObject.setWindow("Main", nameOfWindowController: "Edit User Settings Window")
-        singleton.openWindowObject.runModalWindow()
+        // - 1 Sets up window object.
+            singleton.openWindowObject.setWindow("Main", nameOfWindowController: "Edit User Settings Window")
+        // 2 - Runs modal session of window object.
+            singleton.openWindowObject.runModalWindow()
     }
     
     

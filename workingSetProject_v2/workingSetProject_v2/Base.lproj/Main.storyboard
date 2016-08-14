@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
@@ -1028,7 +1028,7 @@ Gw
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn editable="NO" width="198.66796875" minWidth="40" maxWidth="1000" id="MNN-8x-OFK">
+                                                <tableColumn editable="NO" width="179.0859375" minWidth="40" maxWidth="1000" id="MNN-8x-OFK">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Name">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1042,25 +1042,31 @@ Gw
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="NameCellID" id="55F-ud-203">
-                                                            <rect key="frame" x="1" y="1" width="199" height="17"/>
+                                                            <rect key="frame" x="1" y="1" width="179" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="33X-IZ-r8s">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="33X-IZ-r8s">
                                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="17"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="i6o-Jm-gq0">
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" sendsActionOnEndEditing="YES" title="Table View Cell" id="i6o-Jm-gq0">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="33X-IZ-r8s" firstAttribute="leading" secondItem="55F-ud-203" secondAttribute="leading" constant="7" id="6NL-V6-zkI"/>
+                                                                <constraint firstAttribute="trailing" secondItem="33X-IZ-r8s" secondAttribute="trailing" constant="3" id="gYJ-wh-GV4"/>
+                                                                <constraint firstItem="33X-IZ-r8s" firstAttribute="centerY" secondItem="55F-ud-203" secondAttribute="centerY" id="rGW-2h-qk5"/>
+                                                                <constraint firstItem="33X-IZ-r8s" firstAttribute="top" secondItem="55F-ud-203" secondAttribute="top" id="vHr-07-K9m"/>
+                                                            </constraints>
                                                             <connections>
                                                                 <outlet property="textField" destination="33X-IZ-r8s" id="Xne-x8-ppZ"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn width="233" minWidth="40" maxWidth="1000" id="AjJ-b1-F6p">
+                                                <tableColumn width="253" minWidth="40" maxWidth="1000" id="AjJ-b1-F6p">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Date Last Used">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1074,10 +1080,10 @@ Gw
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="DateCellID" id="6N2-FI-RbB">
-                                                            <rect key="frame" x="203" y="1" width="233" height="17"/>
+                                                            <rect key="frame" x="183" y="1" width="253" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W1W-Rf-xIk">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W1W-Rf-xIk">
                                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="KIT-fV-FWm">
                                                                         <font key="font" metaFont="system"/>
@@ -1086,6 +1092,12 @@ Gw
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="W1W-Rf-xIk" firstAttribute="centerY" secondItem="6N2-FI-RbB" secondAttribute="centerY" id="286-e5-4L2"/>
+                                                                <constraint firstAttribute="trailing" secondItem="W1W-Rf-xIk" secondAttribute="trailing" constant="20" symbolic="YES" id="6Dr-OX-AG3"/>
+                                                                <constraint firstItem="W1W-Rf-xIk" firstAttribute="leading" secondItem="6N2-FI-RbB" secondAttribute="leading" constant="3" id="aC5-Sy-iL5"/>
+                                                                <constraint firstItem="W1W-Rf-xIk" firstAttribute="top" secondItem="6N2-FI-RbB" secondAttribute="top" id="k0L-DQ-G0y"/>
+                                                            </constraints>
                                                             <connections>
                                                                 <outlet property="textField" destination="W1W-Rf-xIk" id="Shg-vM-833"/>
                                                             </connections>

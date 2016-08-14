@@ -16,25 +16,17 @@ extension workingSetManagerViewController : NSTableViewDataSource {
     func updateStatus() {
         let index = tableView!.selectedRow
         
-       print( index )
-        
         // 1 - Get collection of objects from object graph.
         workingSets = singleton.coreDataObject.getDataObjects("WorkingDomain")
         
         // 2 - Set the current selection of working set from table view.
         let item = workingSets[tableView!.selectedRow]
         
-        //print( item )
         
         
         nameOfWS =  launchWindowTable.getItemSelected_String(tableView, managedObjectArray: workingSets, objectAttr: "nameOfWD")
         
-        // 3 - Change the status label beneath the table view dynamically as selection changes.
-        //statusLabel.stringValue = launchWindowTable.getStatusOfItemsSelected(tableView, itemCount: workingSets.count)
-        
-        //print(nameOfWS)
-        
-        // 4 - When a working set is seleted from the table view, launch window buttons are then made available to be pressed.
+        // 3 - When a working set is seleted from the table view, launch window buttons are then made available to be pressed.
         switchOnOffButtons(true,deleteActive: true,associateActive: false)
     }
     
@@ -87,7 +79,6 @@ extension workingSetManagerViewController : NSTableViewDelegate {
     
     func tableViewSelectionDidChange(notification: NSNotification) {
         updateStatus()
-       
     }
     
     func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -114,8 +105,7 @@ extension workingSetManagerViewController : NSTableViewDelegate {
         
         // 4 - Value to Fill Table as per Row
         var value = workingSets[row].valueForKey("nameOfWD") as? String
-        //var date = workingSets[row].valueForKey("dateLastUsed") as? String
-        //print(date)
+        var date = workingSets[row].valueForKey("dateLastAccessed") as? String
         // 5 Assign Value in Event that there is no Retrieved Value
         if(value == nil){
             value = "Unnamed"
@@ -126,7 +116,7 @@ extension workingSetManagerViewController : NSTableViewDelegate {
             text = value!
             cellIdentifier = "NameCellID"
         } else if tableColumn == tableView.tableColumns[1] {
-            text = "apple"
+            text = date!
             cellIdentifier = "DateCellID"
         }
         

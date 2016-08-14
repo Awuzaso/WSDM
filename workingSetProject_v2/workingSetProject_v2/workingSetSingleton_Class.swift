@@ -23,46 +23,37 @@ class workingSetSingleton {
     
     /*Frequently Used Variables*/
     
-        // The currently selected 
-        var selectedWS:String!
-    
         // Bool variable that constrains actions on the basis if a card is present or not.
-        var canAssociateVar = false
-    
-        // The rfidValue of the currently read card.
-        var rfidValue:String!
+            var canAssociateVar = false
     
         // The current card that is read.
-        var readCard:NSManagedObject!
+            var readCard:NSManagedObject!
     
         // The name of the currently opened working domain.
-        var openedWD: String!
-    
-        // Path to user's preferred file directory.
-        var filePath:String {
-            get{
-                return userPrefObject.get_fileDirectory(&coreDataObject)
-            }
-        }
+            var openedWD: String!
     
         //Path to user's prefferred serial port.
-        var serialPath:String {
-            get{
-                return userPrefObject.get_serialPort(&coreDataObject)
+            var serialPath:String {
+                get{
+                    return userPrefObject.get_serialPort(&coreDataObject)
+                }
             }
+    
+    /*Function for retrieving the current date in string form.*/
+        func getDate(dateFormat:String)->String{
+            
+            // - 1 - Gets the current date.
+                let currentDate = NSDate()
+            
+            // - 2 - Setting up date formatter.
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.locale = NSLocale(localeIdentifier: "en_GR")
+                dateFormatter.dateFormat = dateFormat
+            
+            // - 3 - Convert the prior date established earlier.
+                var convertedDate = dateFormatter.stringFromDate(currentDate)
+            
+            return convertedDate
         }
-    func getDate(dateFormat:String)->String{
-        
-        let currentDate = NSDate()
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_GR")
-        dateFormatter.dateFormat = dateFormat
-        
-        //dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
-        var convertedDate = dateFormatter.stringFromDate(currentDate)
-        
-        return convertedDate
-    }
     
 }
