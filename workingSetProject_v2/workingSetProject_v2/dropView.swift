@@ -20,7 +20,7 @@ class dropView: NSView {
         
         self.wantsLayer = true
         
-        self.layer?.backgroundColor = NSColor.grayColor().CGColor
+        //self.layer?.backgroundColor = NSColor.grayColor().CGColor
         
         registerForDraggedTypes([NSFilenamesPboardType, NSURLPboardType])
     }

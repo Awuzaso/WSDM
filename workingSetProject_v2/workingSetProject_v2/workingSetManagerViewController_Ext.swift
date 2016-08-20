@@ -79,6 +79,7 @@ extension workingSetManagerViewController : NSTableViewDataSource {
 extension workingSetManagerViewController : NSTableViewDelegate {
     
     func tableViewSelectionDidChange(notification: NSNotification) {
+        
         updateStatus()
     }
     

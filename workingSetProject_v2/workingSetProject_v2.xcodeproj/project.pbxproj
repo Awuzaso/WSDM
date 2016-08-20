@@ -218,13 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				4CA939651D5419B000495ACB /* EditWorkingDomainController */,
-				4C723AE41D2B838B00E3CB51 /* WorkingDomainController.swift */,
-				4CD086A41D31C92600686ED7 /* WorkingDomainController_Ext.swift */,
-				4CF5C6431D4807BC00343D57 /* WorkingDomainController_DragExt.swift */,
-				4CD086A61D31CE1700686ED7 /* tableViewManagerClass.swift */,
-				4CD075E91D3DDD1D009DAE45 /* removeWindow.swift */,
-				4CE737321D4457B800FDF6F9 /* WorkingDomainWindow.swift */,
-				4CC51E811D35929A003BBD04 /* dropView.swift */,
+				4CCFD0801D662C0700C87B0B /* WorkingDomainController */,
 			);
 			name = WorkingDomain_Class;
 			sourceTree = "<group>";
@@ -254,6 +248,20 @@
 				4CA939661D5419FA00495ACB /* EditWorkingDomainController_Ext.swift */,
 			);
 			name = EditWorkingDomainController;
+			sourceTree = "<group>";
+		};
+		4CCFD0801D662C0700C87B0B /* WorkingDomainController */ = {
+			isa = PBXGroup;
+			children = (
+				4C723AE41D2B838B00E3CB51 /* WorkingDomainController.swift */,
+				4CD086A41D31C92600686ED7 /* WorkingDomainController_Ext.swift */,
+				4CF5C6431D4807BC00343D57 /* WorkingDomainController_DragExt.swift */,
+				4CD086A61D31CE1700686ED7 /* tableViewManagerClass.swift */,
+				4CD075E91D3DDD1D009DAE45 /* removeWindow.swift */,
+				4CE737321D4457B800FDF6F9 /* WorkingDomainWindow.swift */,
+				4CC51E811D35929A003BBD04 /* dropView.swift */,
+			);
+			name = WorkingDomainController;
 			sourceTree = "<group>";
 		};
 		4CD086AA1D3233B600686ED7 /* UnAssociatedViewController */ = {

@@ -24,6 +24,7 @@ class WorkingDomainController: NSViewController {
     
     @IBOutlet weak var pathControl: NSPathControl!
     
+    @IBOutlet weak var textField: NSTextField!
     
     
     
@@ -37,6 +38,24 @@ class WorkingDomainController: NSViewController {
     var sortOrder = Directory.FileOrder.Name
     var sortAscending = true
 
+    func setNoteTable(){
+        
+        let wd = singleton.coreDataObject.getEntityObject("WorkingDomain", idKey: "nameOfWD", idName: singleton.openedWD)
+        
+        
+        
+        let noteOfWD = wd.valueForKey("noteForWD")
+        
+        if( noteOfWD == nil ){
+            textField.stringValue = "Type your notes here."
+        }
+        else{
+            textField.stringValue = noteOfWD as! String
+        }
+        
+        
+    }
+    
     
     func setupTableView(){
         tableViewWD!.setDelegate(self)
@@ -46,11 +65,14 @@ class WorkingDomainController: NSViewController {
         
         
         
-           NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveNameChange_Button:",name:"updateWD", object: nil)
-           NSNotificationCenter.defaultCenter().addObserver(self, selector: "rmvFile",name:"remove", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveNameChange_Button:",name:"updateWD", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "rmvFile",name:"remove", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveName",name:"saver", object: nil)
 
+        
+        
+        
         
     }
     
@@ -84,7 +106,7 @@ class WorkingDomainController: NSViewController {
         loadedWDName = nameOfWD.stringValue
         setupTableView()
         pathControl.doubleAction = "openPath"
-        
+        setNoteTable()
         
         let registeredTypes:[String] = [NSStringPboardType]
         tableViewWD.registerForDraggedTypes(registeredTypes)
@@ -119,6 +141,10 @@ class WorkingDomainController: NSViewController {
     }
     
     
+    
+    
+    
+    
     @IBAction func saveNameChange_Button(sender: AnyObject) {
         singleton.coreDataObject.editEntityObject("WorkingDomain", nameOfKey: "nameOfWD", oldName: loadedWDName, editName: nameOfWD.stringValue)
         loadedWDName = nameOfWD.stringValue
@@ -143,6 +169,16 @@ class WorkingDomainController: NSViewController {
         singleton.openWindowObject.setWindow("Main", nameOfWindowController: "EditWDWindow")
         singleton.openWindowObject.runModalWindow()
         
+        
+        
+    }
+    
+    
+    @IBAction func onEnterTextFieldButton(sender: NSTextField) {
+        
+        print("Note saved!")
+        
+        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "noteForWD", idName: singleton.openedWD, editName: sender.stringValue)
         
         
     }

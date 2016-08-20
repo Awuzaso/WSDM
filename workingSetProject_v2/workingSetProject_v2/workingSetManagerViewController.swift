@@ -140,6 +140,17 @@ class workingSetManagerViewController: NSViewController {
     }
     
     
+    @IBAction func onEnterChangeNameOfWD(sender: NSTextField) {
+        print("Name changed.")
+        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "nameOfWD", idName: nameOfWS, editName: sender.stringValue)
+        tableView.reloadData()
+        
+        
+    }
+    
+    
+    
+    
     
     
     // MARK: - Button Actions

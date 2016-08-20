@@ -19,6 +19,7 @@
     <entity name="WorkingDomain" syncable="YES">
         <attribute name="dateLastAccessed" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nameOfWD" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="noteForWD" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="associatedCards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Card" inverseName="associatedWD" inverseEntity="Card" syncable="YES"/>
         <relationship name="associatedFiles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="File" inverseName="associatedWD" inverseEntity="File" syncable="YES"/>
     </entity>
@@ -26,6 +27,6 @@
         <element name="Card" positionX="-63" positionY="27" width="128" height="135"/>
         <element name="File" positionX="-54" positionY="9" width="128" height="90"/>
         <element name="User_Attr" positionX="-54" positionY="9" width="128" height="60"/>
-        <element name="WorkingDomain" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="WorkingDomain" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>
