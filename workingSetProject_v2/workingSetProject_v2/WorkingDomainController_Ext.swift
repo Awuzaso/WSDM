@@ -19,11 +19,16 @@ extension WorkingDomainController : NSTableViewDataSource {
         // 2 - Set the current selection of working set from table view.
         //let item = workingSets[tableView!.selectedRow]
         
-        selectedFile =  getItemSelected_String(tableViewWD)
+        if(tableViewWD.selectedRow != -1){
+            selectedFile =  getItemSelected_String(tableViewWD)
+            directoryPath = singleton.coreDataObject.getValueOfEntityObject("File", idKey: "nameOfFile", nameOfKey: "nameOfPath", nameOfObject: selectedFile)
+            let fileURL = NSURL(fileURLWithPath: directoryPath)
+            pathControl.URL = fileURL
+        }
         
-        directoryPath = singleton.coreDataObject.getValueOfEntityObject("File", idKey: "nameOfFile", nameOfKey: "nameOfPath", nameOfObject: selectedFile)
-        let fileURL = NSURL(fileURLWithPath: directoryPath)
-        pathControl.URL = fileURL
+        
+        
+        
         
         // 3 - Change the status label beneath the table view dynamically as selection changes.
         //statusLabel.stringValue = "Directory Path"
@@ -83,9 +88,14 @@ extension WorkingDomainController : NSTableViewDataSource {
                 associatedObjects.append(item)
             }
         
+        
+        
         let item = associatedObjects[tableView.selectedRow]
         
+        
+        
         return item
+        
     }
     
   
@@ -163,6 +173,7 @@ extension WorkingDomainController : NSTableViewDataSource {
     }
     
     func tableViewDoubleClick(sender: AnyObject) {
+        if(selectedFile != nil){
         print("Double click for \(selectedFile)")
         
         
@@ -175,7 +186,7 @@ extension WorkingDomainController : NSTableViewDataSource {
         print (filePath)
         
        NSWorkspace.sharedWorkspace().selectFile(nil, inFileViewerRootedAtPath: filePath)
-        
+        }
         
         
     }

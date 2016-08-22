@@ -41,7 +41,7 @@ extension workingSetManagerViewController : NSTableViewDataSource {
         }
         else{
             print("Nothing is selected.")
-            openWDButton.enabled = false
+            //openWDButton.enabled = false
         }
         
     }

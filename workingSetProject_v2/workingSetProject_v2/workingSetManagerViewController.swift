@@ -44,7 +44,7 @@ class workingSetManagerViewController: NSViewController {
     
     /*Function for toggling between off and on state of buttons.*/
     func switchOnOffButtons(openActive:Bool,deleteActive:Bool,associateActive:Bool){
-        openWDButton.enabled = openActive
+        //openWDButton.enabled = openActive
         //deleteWDButton.enabled = deleteActive
         //associateWDButton.enabled  = associateActive
     }
@@ -89,7 +89,7 @@ class workingSetManagerViewController: NSViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "launchAssociatedWindow:", name: "associateWindow", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "AssociateWDButton", name: "AW", object: nil)
         
-       
+       NSNotificationCenter.defaultCenter().addObserver(self, selector: "deleteWDButton", name: "delWD", object: nil)
         
     }
     
@@ -143,6 +143,10 @@ class workingSetManagerViewController: NSViewController {
     @IBAction func onEnterChangeNameOfWD(sender: NSTextField) {
         print("Name changed.")
         singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "nameOfWD", idName: nameOfWS, editName: sender.stringValue)
+        //NSNotificationCenter.defaultCenter().postNotificationName("saver", object: nil)
+        
+        singleton.openedWD = sender.stringValue
+        NSNotificationCenter.defaultCenter().postNotificationName("saver", object: nil)
         tableView.reloadData()
         
         
@@ -158,11 +162,54 @@ class workingSetManagerViewController: NSViewController {
     @IBAction func addNewWDButton(sender: AnyObject) {
         print("'Add new button' was pressed.")
         
+        
+        var iter = 1
+        
+        var potentialName = "Untitled Working Domain \(iter)"
+        
+        var ifInDB = singleton.coreDataObject.evaluateIfInDB("WorkingDomain", nameOfKey: "nameOfWD", nameOfObject: potentialName)
+        print("Evaluated as \(ifInDB)")
+        while(ifInDB == true){
+            
+            iter = iter + 1
+            
+            potentialName = "Untitled Working Domain \(iter)"
+            
+            ifInDB = singleton.coreDataObject.evaluateIfInDB("WorkingDomain", nameOfKey: "nameOfWD", nameOfObject: potentialName)
+            
+            
+        }
+        
+        singleton.openedWD = potentialName
+        NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
+        singleton.coreDataObject.addEntityObject("WorkingDomain", nameOfKey: "nameOfWD", nameOfObject: singleton.openedWD)
+        
+        singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateLastAccessed", idName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
+        
+        
+        /*
+        print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+
+        var ifInDB = singleton.coreDataObject.evaluateIfInDB("WorkingDomain", nameOfKey: "nameOfWD", nameOfObject: "Untitled Working Domain")
+        print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+        if(ifInDB == true){
+            print("Its in the database.")
+        }
+        else{
+            print("Its not in the data base.")
+        }
+        */
+        
+        /*
         if(iteration == 0){
+            //Determine if there is a copy of WD matching Untitled...
+            
+            
+            
             singleton.openedWD = "Untitled Working Domain"
             NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
             singleton.coreDataObject.addEntityObject("WorkingDomain", nameOfKey: "nameOfWD", nameOfObject: singleton.openedWD)
-            //singleton.coreDataObject.editEntityObject("WorkingDomain", nameOfKey: "dateLastAccessed", oldName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
+           
              singleton.coreDataObject.setValueOfEntityObject("WorkingDomain", idKey: "nameOfWD", nameOfKey: "dateLastAccessed", idName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
             iteration = iteration + 1
         }
@@ -176,6 +223,12 @@ class workingSetManagerViewController: NSViewController {
             //singleton.coreDataObject.editEntityObject(, nameOfKey: , oldName: singleton.openedWD, editName: singleton.getDate("EEEE, MMMM dd, yyyy, HH:mm:ss"))
             iteration = iteration + 1
         }
+        */
+        
+        
+        
+        /////////////////////////////////////////
+        
         
         reloadFileList()
         
@@ -221,6 +274,7 @@ class workingSetManagerViewController: NSViewController {
     }
 
     @IBAction func deleteWDButton(sender: AnyObject) {
+        print("Delete.")
         singleton.coreDataObject.deleteEntityObject("WorkingDomain", nameOfKey: "nameOfWD", nameOfObject: nameOfWS)
         reloadFileList()
     }

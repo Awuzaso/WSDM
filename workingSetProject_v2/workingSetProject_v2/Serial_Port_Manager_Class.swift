@@ -37,6 +37,9 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
         nameOfWindowIfUnassociated = in_nameOfWinUnAssoc
        let tpathName = "/dev/cu.Bluetooth-Incoming-Port"
         
+        
+        
+        //serialPort = ORSSerialPort(path: "/dev/cu.\(setPath)")  //Essentially i'm ignoring pathName.
         serialPort = ORSSerialPort(path: "\(pathName)")
         
         let descriptor = ORSSerialPacketDescriptor(prefixString: "_", suffixString: "\n" , maximumPacketLength: 34, userInfo: nil)
@@ -123,16 +126,20 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
             // - Case if card is in data base.
                 if(cardIsInDB == false){
                     // - Brings up a modal window to tell user that the card is a new to the database.
-                    singleton.openWindowObject.setWindow("Main", nameOfWindowController: "UAWindow")
-                    singleton.openWindowObject.runModalWindow()
+                    if(singleton.canOpenAssocWindow == true){
+                        singleton.openWindowObject.setWindow("Main", nameOfWindowController: "UAWindow")
+                        singleton.openWindowObject.runModalWindow()
+                    }
                     
+                    singleton.readCard = singleton.coreDataObject.getEntityObject("Card", idKey: "rfidValue", idName: sendVal)
+                    NSNotificationCenter.defaultCenter().postNotificationName("enableAssoc", object: nil)
                 }
             // - Case if card read is in the data base.
                 else{
                     
                     // - Assigns the value of the currently read card.
                         singleton.readCard = singleton.coreDataObject.getEntityObject("Card", idKey: "rfidValue", idName: sendVal)
-                        NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
+                        //NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
                     // - Enables the option to associate card.
                         singleton.canAssociateVar = true
                     
@@ -147,10 +154,11 @@ class SerialPortManager:NSObject,ORSSerialPortDelegate{
                         if(nameOfAssociatedWD != nil){
                             // - 1 - Sets the value of the currently opened WD to the name value associated with the card.
                             singleton.openedWD = associatedWD?.valueForKey("nameOfWD") as! String
-                            NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
+                            //NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
                             NSNotificationCenter.defaultCenter().postNotificationName("associateWindow", object: nil)
                         }
                     
+                    NSNotificationCenter.defaultCenter().postNotificationName("enableAssoc", object: nil)
                 }
             
         }

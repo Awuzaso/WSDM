@@ -13,6 +13,11 @@ extension AppDelegate{
     func init_WSDM_Window(){
         openWindowObject.setWindow("Main",nameOfWindowController: "WorkingDomainManager")
         windowController = openWindowObject.get_windowController()
+        ///
+        openWindowObject2.setWindow("Main",nameOfWindowController: "UAWindow")
+        unassocCardWinController = openWindowObject2.get_windowController()
+        //
+        
     }
     
 
@@ -44,6 +49,21 @@ extension AppDelegate{
     
     
     func initializeApp(){
+        
+        let serialPortManager = ORSSerialPortManager.sharedSerialPortManager()
+        let serPort = serialPortManager.availablePorts
+        let selectedPort = serPort[0]
+        ///*
+
+        let pthNm = "/dev/cu.\(selectedPort)"
+        print( pthNm )
+        singleton.serialPortObject = SerialPortManager(pathName: pthNm ,in_nameOfStoryBoard: "Main" ,in_nameOfWinUnAssoc:"UAWindow",  in_nameOfWinAssoc: "AWindow")
+        
+        singleton.serialPath = pthNm
+        
+        //*/
+        
+        /*
         let evalValue = determineIfFirstTimeLaunch()
         
         // Case if program is being used for the first time.
@@ -63,9 +83,9 @@ extension AppDelegate{
             else{
                 // - 1 WSDM loads the preferred serial port into the singleton:
                     singleton.serialPortObject = SerialPortManager(pathName: singleton.serialPath ,in_nameOfStoryBoard: "Main" ,in_nameOfWinUnAssoc:"UAWindow",  in_nameOfWinAssoc: "AWindow")
-            }
+            }*/
     }
-
+ 
     
     
 }

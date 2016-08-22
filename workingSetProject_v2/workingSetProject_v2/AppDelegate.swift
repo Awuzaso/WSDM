@@ -16,9 +16,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
         /*Sets up constants.*/
             let openWindowObject = windowManager()
-    
+            let openWindowObject2 = windowManager()
         /*Sets up varuables.*/
             var windowController = NSWindowController()
+            var unassocCardWinController = NSWindowController()
             var serialPortObject: SerialPortManager!
   
 
@@ -29,6 +30,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         initializeApp()
         
+        //print( singleton.serialPortObject.serialPortManager.availablePorts )
+        
         // - 2 - Initialize WSDM window
             init_WSDM_Window()
         
@@ -37,7 +40,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         
         
+        //let a = singleton.serialPortObject.get_SerialPorts()
         
+        //print( a )
     }
 
     
@@ -51,11 +56,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             windowController.showWindow(sender)
     }
     
+    
+    @IBAction func delWD(sender: AnyObject){
+        NSNotificationCenter.defaultCenter().postNotificationName("delWD", object: nil)
+    }
+    
     @IBAction func launchWindowManager(sender: AnyObject){
-        // - 1 Sets up window object.
+        /*// - 1 Sets up window object.
             singleton.openWindowObject.setWindow("Main", nameOfWindowController: "Edit User Settings Window")
         // 2 - Runs modal session of window object.
-            singleton.openWindowObject.runModalWindow()
+            singleton.openWindowObject.runModalWindow()*/
+        
+        unassocCardWinController.showWindow(sender)
     }
     
     

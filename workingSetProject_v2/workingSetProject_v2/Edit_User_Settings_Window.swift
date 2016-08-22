@@ -6,6 +6,7 @@
 //  Copyright © 2016 Osa. All rights reserved.
 //
 
+
 import Cocoa
 
 class Edit_User_Settings_Window: NSViewController {
@@ -47,6 +48,7 @@ class Edit_User_Settings_Window: NSViewController {
         
         singleton.userPrefObject.set_serialPort(&dataCore, portPath: portPath)
         
+        
         singleton.serialPortObject = SerialPortManager(pathName: portPath ,in_nameOfStoryBoard: "Main" ,in_nameOfWinUnAssoc:"UAWindow",  in_nameOfWinAssoc: "AWindow")
         NSNotificationCenter.defaultCenter().postNotificationName("UVS", object: nil)
         
@@ -54,7 +56,7 @@ class Edit_User_Settings_Window: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDefaultPref()
+        //setDefaultPref()
     }
     
     @IBAction func OK_Button(sender: AnyObject) {

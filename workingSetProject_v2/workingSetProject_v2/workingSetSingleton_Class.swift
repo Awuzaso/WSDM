@@ -33,11 +33,26 @@ class workingSetSingleton {
             var openedWD: String!
     
         //Path to user's prefferred serial port.
-            var serialPath:String {
+            var serialPath:String!
+    
+        // Variable to control if 'canAssoc' window can pop up.
+            var canOpenAssocWindow = true
+            /*var serialPath:String {
                 get{
+                    
+                    //let listOfSerialPorts = self.serialPortObject.get_SerialPorts()
+                    
+                    //print("This is the availaible serial ports:\n")
+                    //print( listOfSerialPorts )
+                    
+                    //let availableSerialPort = listOfSerialPorts[0]
+                    
+                    
+                    
+                    //return availableSerialPort
                     return userPrefObject.get_serialPort(&coreDataObject)
                 }
-            }
+            }*/
     
     /*Function for retrieving the current date in string form.*/
         func getDate(dateFormat:String)->String{

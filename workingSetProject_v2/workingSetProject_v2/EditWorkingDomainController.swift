@@ -32,15 +32,17 @@ class EditWorkingDomainController: NSViewController {
         
         super.viewDidLoad()
         
+        singleton.canOpenAssocWindow = false
+        
         init_cardAssociatedList()
         
-        tableView.setDelegate(self)
-        tableView.setDataSource(self)
+        tableView!.setDelegate(self)
+        tableView!.setDataSource(self)
         tableView!.target = self
         tableView.doubleAction = "tableViewDoubleClick:"
         textLabel.stringValue = singleton.openedWD
      
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enableAssociateButton", name: "enableAssoc", object: nil)
         
         
         
@@ -48,11 +50,21 @@ class EditWorkingDomainController: NSViewController {
             addCurrentCardButton.enabled = false
             //removePrevCardButton.enabled = false
         }
+ 
+    }
+    
+    func enableAssociateButton(){
+        addCurrentCardButton.enabled = true
     }
     
     func reloadFileList() {
         //directoryItems = directory?.contentsOrderedBy(sortOrder, ascending: sortAscending)   // Calls sorting function. Returns sorted array
-        tableView.reloadData()
+        cardsAssociated.removeAll()
+        init_cardAssociatedList()
+        tableView!.reloadData()
+        
+        
+        print( "Data was reloaded." )
     }
     
     
@@ -142,8 +154,12 @@ class EditWorkingDomainController: NSViewController {
         
         let cards = openedWD.mutableSetValueForKey("associatedCards")
         cards.addObject(singleton.readCard)
-        tableView.reloadData()
-        //reloadFileList()
+        singleton.coreDataObject.saveManagedContext()
+        print("$$$$$$$$")
+        print(cards)
+         print("$$$$$$$$")
+        //tableView.reloadData()
+        reloadFileList()
     }
     
     
@@ -160,7 +176,7 @@ class EditWorkingDomainController: NSViewController {
             
             
             
-            tableView.reloadData()
+            reloadFileList()
         }
         
   
@@ -177,6 +193,7 @@ class EditWorkingDomainController: NSViewController {
     
     
     @IBAction func cancel_Button(sender: AnyObject) {
+        singleton.canOpenAssocWindow = true
         singleton.openWindowObject.stopEvents()
     }
     

@@ -59,7 +59,7 @@ extension EditWorkingDomainController: NSTableViewDataSource{
         }
 
         
-        print("Number of items: \(cardsAssociated.count)")
+        //print("Number of items: \(cardsAssociated.count)")
     }
     
     
@@ -105,9 +105,9 @@ extension EditWorkingDomainController: NSTableViewDataSource{
         
         
         
-       print( "/////////////////////////////////")
-       print( cardsAssociated.count)
-         print( "/////////////////////////////////")
+       //print( "/////////////////////////////////")
+       //print( cardsAssociated.count)
+        // print( "/////////////////////////////////")
        
         //let list = spec.mutableSetValueForKey("associatedCards")
        
@@ -153,7 +153,7 @@ extension EditWorkingDomainController: NSTableViewDataSource{
 
     
     func updateStatus(){
-        print("Update")
+        //print("Update")
         ///*
          
          let index = tableView!.selectedRow
@@ -169,10 +169,12 @@ extension EditWorkingDomainController: NSTableViewDataSource{
         
          
          // 2 - Set the current selection of working set from table view.
+        if( tableView!.selectedRow != -1 ){
          let item = cardsAssociated[tableView!.selectedRow]
-         
+        
          nameOfCard =  launchWindowTable.getItemSelected_String(tableView, managedObjectArray: cardsAssociated, objectAttr: "rfidValue")
-         
+        }
+        
          // 3 - When a working set is seleted from the table view, launch window buttons are then made available to be pressed.
          //switchOnOffButtons(true,deleteActive: true,associateActive: false)
 
@@ -190,7 +192,7 @@ extension EditWorkingDomainController: NSTableViewDataSource{
 extension EditWorkingDomainController: NSTableViewDelegate{
     
     func tableViewSelectionDidChange(notification: NSNotification) {
-        print( "Selection is made" )
+        //print( "Selection is made" )
         updateStatus()
     }
     
@@ -201,11 +203,11 @@ extension EditWorkingDomainController: NSTableViewDelegate{
        
         
         if(cardsAssociated.count == 0){
-            print( "There is nothing inside." )
+            //print( "There is nothing inside." )
             isEmpty = true
         }
         else{
-             print( "There is something." )
+            // print( "There is something." )
             isEmpty = false
         }
 
@@ -224,12 +226,21 @@ extension EditWorkingDomainController: NSTableViewDelegate{
             var cardName:String!
             var cardOwner:String!
             var dateLastAccessed:String!
+            
+            //print( cardsAssociated.count )
+            /*
             for i in cardsAssociated{
+                //print( i )
                 item = i.valueForKey("rfidValue") as! String
                 cardName = i.valueForKey("cardName") as! String
                 cardOwner = i.valueForKey("cardOwner") as! String
                 dateLastAccessed = i.valueForKey("dateLastAccessed") as! String
             }
+            */
+            item = cardsAssociated[row].valueForKey("rfidValue") as! String
+            cardName = cardsAssociated[row].valueForKey("cardName") as! String
+            cardOwner = cardsAssociated[row].valueForKey("cardOwner") as! String
+            dateLastAccessed = cardsAssociated[row].valueForKey("dateLastAccessed") as! String
             
             // 2
             if tableColumn == tableView.tableColumns[0] {
