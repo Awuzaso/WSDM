@@ -15,6 +15,7 @@ class WorkingDomainController: NSViewController {
     var loadedWDName = "Value"
     var wdAccDate:NSDate!
     
+  
     
     
     @IBOutlet weak var tableViewWD: NSTableView!
@@ -40,6 +41,8 @@ class WorkingDomainController: NSViewController {
 
     func setNoteTable(){
         
+        
+        
         let wd = singleton.coreDataObject.getEntityObject("WorkingDomain", idKey: "nameOfWD", idName: singleton.openedWD)
         
         
@@ -63,7 +66,7 @@ class WorkingDomainController: NSViewController {
         tableViewWD!.target = self
         tableViewWD.doubleAction = "tableViewDoubleClick:"
         
-        
+     
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveNameChange_Button:",name:"updateWD", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "rmvFile",name:"remove", object: nil)
@@ -71,10 +74,9 @@ class WorkingDomainController: NSViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "saveName",name:"saver", object: nil)
 
         
-        
-        
-        
     }
+    
+ 
     
     func openPath(){
         
@@ -182,6 +184,12 @@ class WorkingDomainController: NSViewController {
         
         
     }
+    
+    
+    
+    
+    
+    
     
     
     func updateTableViewWD(){

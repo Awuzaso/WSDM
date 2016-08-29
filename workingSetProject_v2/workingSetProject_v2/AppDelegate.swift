@@ -13,7 +13,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
    
-    
+            var secondsPassed = 0.0
         /*Sets up constants.*/
             let openWindowObject = windowManager()
             let openWindowObject2 = windowManager()
@@ -23,12 +23,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             var serialPortObject: SerialPortManager!
   
 
+    
+    
+    
+    
+    func event(){
+        print("Timer is going for \(secondsPassed)")
+        secondsPassed = secondsPassed + 10
+    }
+    
+    
     // PRIMARY FUNCTIONS
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // - 1 Calls function to initialize values for app.
         print("Initializing App")
         
         initializeApp()
+        
+        print("Hello.")
+        var timer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "event", userInfo: nil, repeats: true)
+        
         
         //print( singleton.serialPortObject.serialPortManager.availablePorts )
         
